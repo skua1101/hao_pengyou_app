@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# <ハオポンヨー>
 
-Things you may want to cover:
+## サイト概要
+<留学生と日本人の教育を目的としたマッチングサイト>
 
-* Ruby version
+### サイトテーマ
+<日本人と中国人が一緒にカフェなどでランチやイベント開催>
 
-* System dependencies
+### テーマを選んだ理由
+<僕の知り合いに中国の留学生がいて、「日本人と友達になりたいけど、出会う場所がない」というのを聞きます。留学に不安な人にも楽しく充実した生活を送ってもらうためにこのテーマをえらびました。>
 
-* Configuration
+### ターゲットユーザ
+<日本語を勉強したいと思っている中国人留学生と中国を勉強している日本人>
 
-* Database creation
+### 主な利用シーン
+<学習のインプットだけでなくアウトプットする場が欲しいや海外の方の価値観に触れたいときなど。>
 
-* Database initialization
+## 設計書
+<作成中>
 
-* How to run the test suite
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1EqCzlaC_EZ4WQHGy9iX7TQH4RndlUfRQJlYrJZFGa1w/edit?usp=sharing>
 
-* Services (job queues, cache servers, search engines, etc.)
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Deployment instructions
-
-* ...
+## 使用素材
