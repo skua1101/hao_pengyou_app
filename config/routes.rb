@@ -1,17 +1,25 @@
 Rails.application.routes.draw do
-  get 'reservations/index'
-  get 'reservations/show'
-  get 'reservations/confirm'
-  get 'reservations/complete'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/update'
-  get 'events/new'
-  get 'events/create'
-  get 'events/index'
-  get 'events/show'
-  get 'homes/top'
-  get 'homes/about'
-  devise_for :users
+
+  devise_for :users, controllers: {
+    sessions: 'devise/sessions',
+    registrations: 'devise/registrations'
+  }
+  root to: "homes#top"
+  get "home/about"=>"homes#about"
+
+  resources :users, only: [:show,:edit,:update]do
+    resource :relationships, only: [:create, :destroy]
+      get :follower, on: :member
+      get :followed, on: :member
+  end
+
+  resources :events, only: [:new,:index,:show,:create]
+
+  resources :reservations, only: [:index,:show]do
+   collection do
+      get 'confirm'
+      get 'complete'
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
