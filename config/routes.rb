@@ -5,9 +5,9 @@ Rails.application.routes.draw do
     registrations: 'devise/registrations'
   }
   root to: "homes#top"
-  get "home/about"=>"homes#about"
+  get '/about' => 'homes#about'
 
-  resources :users, only: [:show,:edit,:update]do
+  resource :users, only: [:show,:edit,:update]do
     resource :relationships, only: [:create, :destroy]
       get :follower, on: :member
       get :followed, on: :member
