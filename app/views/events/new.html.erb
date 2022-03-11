@@ -1,2 +1,62 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<div class="container p-3">
+  <h4 class="col-md-3 bg-light text-center m-4">新規イベント作成</h4>
+  <div class="row no-gutters contents-title text-center">
+    <div class="col-md-12 col-sm-10 p-4 mx-sm-auto">
+
+      <!--イベント画像-->
+      <%= form_with model: @event, local:true do |f| %>
+      <div class="row pb-1 ">
+          <%= f.label :イベント画像, class: "col-sm-3" %>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <%= f.file_field :image, accept: "image/*" %>
+            </div>
+          </div>
+      </div>
+
+      <!--イベント名の記入欄-->
+      <div class="row pb-3">
+        <%= f.label :イベント名, class: "col-sm-3" %>
+          <div class="col-sm-5">
+            <%= f.text_field :event_name, placeholder: "例）渋谷のおしゃれなカフェで朝活しませんか？", class: "form-control" %>
+          </div>
+      </div>
+
+      <!--イベント内容記入欄-->
+      <div class="row pb-3">
+        <%= f.label :イベント内容, class: "col-sm-3" %>
+          <div class="col-sm-5">
+            <%= f.text_field :content, size: "50×5", placeholder: "ここに内容を記述します", class: "form-control" %>
+          </div>
+      </div>
+
+       <!--イベント日記入欄-->
+      <div class="row pb-3">
+        <%= f.label :開催日, class: "col-sm-3" %>
+          <div class="col-sm-5">
+            <%= f.text_field :date, placeholder: "2022/03/10 AM10:00~12:00", class: "form-control" %>
+          </div>
+      </div>
+
+      <!--参加費記入欄-->
+      <div class="row pb-3">
+        <%= f.label :参加費, class: "col-sm-3" %>
+          <div class="col-sm-5">
+            <%= f.text_field :entry_fee, placeholder: "1000円", class: "form-control" %>
+          </div>
+      </div>
+
+      <!--参加費詳細記入欄-->
+      <div class="row pb-3">
+        <%= f.label :参加費詳細, class: "col-sm-3" %>
+          <div class="col-sm-5">
+            <%= f.text_field :entry_fee_detail, placeholder: "ドリンク１杯と場所代として", class: "form-control" %>
+          </div>
+      </div>
+
+      <%= f.submit '新規作成', class: "btn btn-primary" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
