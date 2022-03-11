@@ -37,10 +37,32 @@
          <td style="padding: 15px 10px;"><%= @user.email %></td>
        </tr>
       </table>
-      
+
       <div class="form-group" style="display: flex">
           <h5 class="col-md-2" style="font-weight: bold;">新規作成</h5>
           <%= link_to"＋",new_event_path,class: "btn btn-success" %>
       </div>
+
+
+      <table class="table table-bordered" style="boder-width: thick">
+       <tr style="background-color: #eeeeee;">
+         <th>作成日</th>
+         <th>イベント名</th>
+         <th>予約数</th>
+         <th>ステータス</th>
+         <th>イベント詳細</th>
+       </tr>
+
+       <!--会員の注文履歴一覧-->
+       <% @user_events.each do |event| %>
+       <tr>
+         <td><%= event.created_at.strftime('%Y/%m/%d') %></td>
+         <td><%= event.event_name %></td>
+         <td></td>
+         <td><%= event.event_status %></td><!--注文ステータス-->
+         <td><%= link_to"詳細へ",event_path(event),class: "btn btn-primary" %></td><!--詳細ページへ-->
+       </tr>
+       <% end %>
+      </table>
 
     </div>
