@@ -1,0 +1,9 @@
+ja:
+  enums:
+    event:
+      event_status:
+        waiting_deposit: "入金待ち"
+        payment_confirmation: "入金確認"
+        in_production: "製作中"
+        preparing_ship: "発送準備中"
+        shipped_items: "発送済み"

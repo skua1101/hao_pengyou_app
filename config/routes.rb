@@ -7,13 +7,13 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get '/about' => 'homes#about'
 
-  resource :users, only: [:show,:edit,:update]do
+  resources :users, only: [:show,:edit,:update]do
     resource :relationships, only: [:create, :destroy]
       get :follower, on: :member
       get :followed, on: :member
   end
 
-  resources :events, only: [:new,:index,:show,:create]
+  resources :events, only: [:new,:index,:show,:create, :update]
 
   resources :reservations, only: [:index,:show]do
    collection do
