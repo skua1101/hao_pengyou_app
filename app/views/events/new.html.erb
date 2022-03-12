@@ -38,6 +38,22 @@
           </div>
       </div>
 
+      <!--イベント会場名記入欄-->
+      <div class="row pb-3">
+        <%= f.label :会場, class: "col-sm-3" %>
+          <div class="col-sm-5">
+            <%= f.text_field :venue, placeholder: "cafe ハオポンヨー", class: "form-control" %>
+          </div>
+      </div>
+
+      <!--イベント会場住所記入欄-->
+      <div class="row pb-3">
+        <%= f.label :会場住所, class: "col-sm-3" %>
+          <div class="col-sm-5">
+            <%= f.text_field :event_address, placeholder: "ここに会場の住所を記載してください", class: "form-control" %>
+          </div>
+      </div>
+
       <!--参加費記入欄-->
       <div class="row pb-3">
         <%= f.label :参加費, class: "col-sm-3" %>
