@@ -22,6 +22,17 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def update
+    # binding.irb
+    # id から event を取得する
+    @event = Event.find(params[:id])
+    # 取得した event の event_status を更新する
+    @event.event_status = params[:event_status]
+    @event.save
+
+    # @event.update(event_params)
+  end
+
   private
 
   def event_params
