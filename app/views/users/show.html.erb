@@ -63,8 +63,29 @@
                 <%= f.select :event_status, options_for_select(Event.event_statuses_i18n.keys.map {|k| [I18n.t("enums.event.event_status.#{k}"), k]}, selected: event.event_status) %>
                 <%= f.submit '更新', class: 'btn btn-success ml-5' %>
               <% end %>
-            </td>
+         </td>
          <td><%= link_to"詳細へ",event_path(event),class: "btn btn-primary" %></td>
+       </tr>
+       <% end %>
+      </table>
+      
+      
+      <!--会員の予約一覧-->
+      <table class="table table-bordered" style="boder-width: thick">
+       <tr style="background-color: #eeeeee;">
+         <th>予約確定日</th>
+         <th>開催日</th>
+         <th>イベント名</th>
+         <th>内容</th>
+       </tr>
+
+       <% @user_reservations.each do |reservation| %>
+       <tr>
+         <td><%= reservation.created_at.strftime('%Y/%m/%d') %></td>
+         <td><%= reservation.event.da %></td>
+         <td><%= reservation.event.event_name %></td>
+         <td></td>
+         <td><%= link_to"予約詳細",confirm_reservation_path,class: "btn btn-primary" %></td>
        </tr>
        <% end %>
       </table>
