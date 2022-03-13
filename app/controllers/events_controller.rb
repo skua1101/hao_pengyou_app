@@ -8,7 +8,7 @@ class EventsController < ApplicationController
     @event.user_id =current_user.id
     if@event.save
       # flash[:notice] = "#{@event.event_name}作成しました。"
-      redirect_to users_path
+      redirect_to user_path(current_user)
     else
       render :new
     end
@@ -29,6 +29,7 @@ class EventsController < ApplicationController
     # 取得した event の event_status を更新する
     @event.event_status = params[:event_status]
     @event.save
+    redirect_to user_path
 
     # @event.update(event_params)
   end

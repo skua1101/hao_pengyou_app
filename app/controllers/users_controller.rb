@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @user_events = @user.events
+    @user_reservations = @user.reservations
   end
 
   def edit

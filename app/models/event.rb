@@ -3,6 +3,6 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :reservations
 
-enum event_status: { waiting_deposit: 0, payment_confirmation: 1, in_production: 2, preparing_ship: 3, shipped_items: 4 }
+enum event_status: { seeking: 0, will_be_held: 1, full: 2, finish: 3 }
 
 end

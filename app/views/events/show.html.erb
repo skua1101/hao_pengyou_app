@@ -23,7 +23,7 @@
        <!--ステータス-->
        <tr>
          <th style="padding: 15px 10px;">ステータス</th>
-         <td style="padding: 15px 10px;"><%= @event.event_status %></td>
+         <td style="padding: 15px 10px;"><%= @event.event_status_i18n %></td>
        </tr>
 
        <!--参加料金-->
@@ -44,9 +44,9 @@
          <td style="padding: 15px 10px;"><%= @event.user.last_name %> <%= @event.user.first_name %></td>
        </tr>
       </table>
-      
-      <div><%= link_to"予約する",event_path,class: "btn btn-primary" %></div>
-      
+
+      <div><%= link_to"予約する",confirm_reservation_path,class: "btn btn-primary" %></div>
+
     </div>
   </div>
 </div>
