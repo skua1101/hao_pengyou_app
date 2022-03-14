@@ -3,8 +3,9 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @user_events = @user.events
-    @user_reservations = @user.reservations
+    # 最新の４件のみ取得「.order('id DESC').limit(4)を追加」
+    @user_events = @user.events.order('id DESC').limit(4)
+    @user_reservations = @user.reservations.order('id DESC').limit(4)
   end
 
   def edit

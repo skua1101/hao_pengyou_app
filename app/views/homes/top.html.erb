@@ -1,13 +1,13 @@
 <div class="main-container">
   <div class="row">
-    <div class='col-md-10'>
+    <div class='col-md-12'>
       <section class="main-visual mt-4">
         <div class="mv-text">
-          <h3 class=text-center>ようこそHaoPengYouへ <i></i></h3>
-          <p class=text-center>
+          <h3 class=text-center style="color: white;">ようこそHaoPengYouへ <i></i></h3>
+          <h4 class=text-center style="color: white;">
             興味のあるイベントをクリックしてイベントに参加しよう！！<br />
             ※開催日時・開催場所をご確認のうえご予約をお願い致します
-          </p>
+          </h4>
         </div>
       </section>
     </div>
@@ -15,7 +15,7 @@
 
   <!--新着イベント-->
   <div class="row mt-4">
-    <section class="new-items col-md-12">
+    <section class="new-items col-md-12" style= "padding: 80px 80px 30px">
       <h3><strong>New Event</strong></h3>
       <div class="row">
         <% @events.each do |event| %>
@@ -32,7 +32,7 @@
       </div>
     </section>
   </div>
-  <div class="col-md-12 text-right">
+  <div class="col-md-12 text-right" style="padding-bottom: 40px;">
     <%= link_to "全てのイベントを見る>", events_path %>
   </div>
 </div>
