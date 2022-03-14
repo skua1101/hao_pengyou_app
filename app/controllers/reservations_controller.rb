@@ -11,21 +11,23 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new(reservation_params)
+    @reservation = Reservation.new
     @reservation.user_id = current_user.id
-    @reservation.event_id = Event.find(params[:id])
-    @reservation.save
-    redirect_to complete_orders_path
+    @reservation.event_id = params[:event_id]
+
+    if@reservation.save
+      redirect_to complete_reservations_path
+    else
+      render confirm_reservation_path
+    end
   end
 
   def complete
     @user = current_user
   end
 
-private
-
-	def reservation_params
-		params.require(:reservation).permit(:user_id, :event_id)
-	end
-
+  private
+  def reservation_params
+    params.require(:reservation).permit(:user_id, :event_id)
+  end
 end

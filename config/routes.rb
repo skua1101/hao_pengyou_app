@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :reservations, only: [:index,:show,:create]do
    member do
       get 'confirm'
+    end
+   collection do
       get 'complete'
     end
   end
