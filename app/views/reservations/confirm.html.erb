@@ -3,6 +3,12 @@
     <h3>予約内容確認</h3>
   </div>
 
+  <%= form_with model: @registrations, url: complete_reservation_path, method: :post, local: true do |f| %>
+    <%= f.hidden_field :event_id, value: @event.id %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+  <% end %>
+
+
   <table border="1" style="margin:10px;">
        <tr>
          <th style="padding: 15px 10px; background-color: #eeeeee;">名前</th>
@@ -43,7 +49,7 @@
       </table>
 
       <div>
-          <%= link_to"予約完了",complete_reservation_path,class: "btn btn-success" %>
+          <%= link_to"予約完了",complete_reservation_path, class: "btn btn-success" %>
       </div>
 
 
