@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+.main-container {
+  background-image: image-url('994844.jpg');
+  background-size: cover;
+}
+
+header {
+  background-color: red;
+  background-size: cover;
+}

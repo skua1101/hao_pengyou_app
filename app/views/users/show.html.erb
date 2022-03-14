@@ -1,11 +1,15 @@
-<div class="container">
+<div class="main-container">
   <div class="row">
     <div class="col">
       <h4 class="col-md-2" style="background-color: #eeeeee; display: inline-block; padding:0 20px; font-weight: bold; margin:50px 0;" >マイページ</h4>
+
+
+      <table><tr><td>
       <div class="form-group" style="display: flex">
-          <h5 class="col-md-2" style="font-weight: bold;">登録情報</h5>
+          <h5 class="col-md-4" style="font-weight: bold;">登録情報</h5>
           <%= link_to"編集する",edit_user_path(@user),class: "btn btn-success" %>
       </div>
+
 　　　<!--会員情報-->
       <table border="1" style="margin:10px;">
        <tr>
@@ -38,19 +42,23 @@
        </tr>
       </table>
 
+      </td>
+
+
+      <td>
       <div class="form-group" style="display: flex">
           <h5 class="col-md-2" style="font-weight: bold;">新規作成</h5>
           <%= link_to"＋",new_event_path,class: "btn btn-success" %>
       </div>
 
 　　　<!--会員の作成イベント一覧-->
-      <table class="table table-bordered" style="boder-width: thick">
-       <tr style="background-color: #eeeeee;">
-         <th>作成日</th>
-         <th>イベント名</th>
-         <th>予約数</th>
-         <th>ステータス</th>
-         <th>イベント詳細</th>
+      <table class="table-bordered" style="boder-width: thick">
+       <tr style="background-color: red; color: white;">
+         <th style="padding: 10px 20px;">作成日</th>
+         <th style="padding: 10px 20px;">イベント名</th>
+         <th style="padding: 10px 20px;">予約数</th>
+         <th style="padding: 10px 20px;">ステータス</th>
+         <th style="padding: 10px 20px;">イベント詳細</th>
        </tr>
 
        <% @user_events.each do |event| %>
@@ -68,8 +76,8 @@
        </tr>
        <% end %>
       </table>
-      
-      
+
+
       <!--会員の予約一覧-->
       <table class="table table-bordered" style="boder-width: thick">
        <tr style="background-color: #eeeeee;">
@@ -82,13 +90,15 @@
        <% @user_reservations.each do |reservation| %>
        <tr>
          <td><%= reservation.created_at.strftime('%Y/%m/%d') %></td>
-         <td><%= reservation.event.da %></td>
+         <td><%= reservation.event.date %></td>
          <td><%= reservation.event.event_name %></td>
          <td></td>
          <td><%= link_to"予約詳細",confirm_reservation_path,class: "btn btn-primary" %></td>
        </tr>
        <% end %>
       </table>
+
+      </td></tr></table>
 
 
     </div>

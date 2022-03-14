@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -18,31 +19,32 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
-
-
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      	  <ul class="nav navbar-nav navbar-right">
+      	  <ul class="nav navbar-nav ml-auto">
             <% if user_signed_in? %>
+              <li class="nav-item">
+                <span class="nav-link text-dark">ようこそ、<%= current_user.last_name %>さん</span>
+              </li>
               <li class="nav-item" >
-                <%= link_to root_path do %>
+                <%= link_to root_path, class: 'btn btn-warning' do %>
                 <span class="fas fa-home"></span>
                  Home
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to user_path(current_user) do %>
+                <%= link_to user_path(current_user), class: 'btn btn-warning' do %>
                 <span class="fas fa-users"></span>
                  My page
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to  events_path do %>
+                <%= link_to  events_path, class: 'btn btn-warning' do %>
                 <span class="fas fa-book-open"></span>
                 Event
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to destroy_user_session_path, method: :delete do %>
+                <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-warning' do %>
                 <span class="fas fa-sign-out-alt"></span>
                  Log out
                 <% end %>
@@ -50,25 +52,25 @@
 
             <% else %>
               <li class="nav-item">
-                <%= link_to root_path do %>
+                <%= link_to root_path, class: 'btn btn-warning' do %>
                 <span class="fas fa-home"></span>
                  Home
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to about_path do %>
+                <%= link_to about_path, class: 'btn btn-warning' do %>
                 <span class="fas fa-link"></span>
                  About
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to events_path do %>
+                <%= link_to events_path, class: 'btn btn-warning' do %>
                 <span class="fas fa-events"></span>
                  Event
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to new_user_registration_path do %>
+                <%= link_to new_user_registration_path, class: 'btn btn-warning' do %>
                 <span class="fas fa-user-plus"></span>
                  Sign up
                 <% end %>
