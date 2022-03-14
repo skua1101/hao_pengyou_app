@@ -1,0 +1,8 @@
+ja:
+  enums:
+    event:
+      event_status:
+        seeking: "募集中"
+        will_be_held: "開催決定"
+        full: "満員"
+        finish: "終了"

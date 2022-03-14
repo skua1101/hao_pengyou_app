@@ -1,0 +1,98 @@
+<div class="container">
+ <%= render "devise/shared/error_messages", resource: resource %>
+</div>
+<div class='container'>
+  <div class='row mt-3'>
+    <div class="col-md-3 bg-light m-4 text-center">
+      <h4>Sign up<i class="fas fa-user-plus"></i></h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='col-md-12 mx-auto mt-3'>
+      <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+
+<!--氏名-->
+　<div class="row form-group">
+    <%= f.label "名前", class: "col-form-label col-md-3" %>
+    <%= f.label :last_name, "（姓）", class: "col-form-label col-sm-1"%>
+    <%= f.text_field :last_name, autofocus: true, :placeholder => "鈴木", class: "form-control col-sm-3" %>
+    <%= f.label :first_name, "（名）", class: "col-form-label col-sm-1"%>
+    <%= f.text_field :first_name, autofocus: true, :placeholder => "太郎", class: "form-control col-sm-3" %>
+　</div>
+
+
+　<!--フリガナ-->
+  <div class="row form-group">
+    <%= f.label "フリガナ", class: "col-form-label col-md-3" %>
+    <%= f.label :last_name_kana, "（セイ）", class: "col-form-label col-sm-1" %>
+    <%= f.text_field :last_name_kana, :placeholder => "スズキ", class: "form-control col-sm-3" %>
+    <%= f.label :first_name_kana, "（メイ）", class: "col-form-label col-sm-1" %>
+    <%= f.text_field :first_name_kana, :placeholder => "タロウ", class: "form-control col-sm-3" %>
+  </div>
+
+<!--メールアドレス-->
+  <div class="row form-group">
+    <%= f.label :email, "メールアドレス", class: "col-md-4 col-form-label"%>
+    <%= f.email_field :email, autofocus: true, :placeholder => "sample@example.com", class: "form-control col-sm-3" %>
+  </div>
+
+  <!--国籍-->
+  <div class="row form-group">
+    <%= f.label :nationality, "国籍", class: "col-md-4 col-form-label"  %>
+    <%= f.text_field :nationality, autofocus: true, :placeholder => "日本or中国", class: "form-control col-md-3" %>
+  </div>
+
+
+<!--郵便番号-->
+  <div class="row form-group">
+    <%= f.label :post_code, "郵便番号(ハイフンなし)", class: "col-md-4 col-form-label"  %>
+    <%= f.text_field :post_code, autofocus: true, :placeholder => "0000000", class: "form-control col-md-3" %>
+  </div>
+
+<!--住所-->
+  <div class="row form-group">
+    <%= f.label :address, "住所", class: "col-form-label col-md-4" %>
+    <%= f.text_field :address, autofocus: true, :placeholder => "東京都渋谷区代々木神園町0-0", class: "form-control col-md-7" %>
+  </div>
+
+<!--電話番号-->
+  <div class="row form-group">
+    <%= f.label :phone_number, "電話番号(ハイフンなし)", class: "col-form-label col-md-4" %>
+    <%= f.text_field :phone_number, autofocus: true,  :placeholder => "0000000000", class: "form-control col-md-3" %>
+  </div>
+
+
+<!--パスワード-->
+  <div class="row form-group">
+    <%= f.label :password, "パスワード(6文字以上)", class: "col-form-label col-md-4" %>
+    <%= f.password_field :password, autocomplete: "off", class: "password form-control col-md-3" %>
+  </div>
+
+
+<!--パスワード確認-->
+  <div class="row form-group">
+    <%= f.label :password_confirmation, "パスワード(確認用)", class: "col-form-label col-md-4" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "password_confirm form-control col-md-3" %>
+  </div>
+
+<!--ボタン-->
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<div class="row">
+        <div class="col-md-2 bg-light ml-4 mt-2 mb-2">
+          <h5>既に登録済みの方</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10 mx-auto my-2">
+          <%= link_to "こちら", new_user_session_path %>からログインしてください。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

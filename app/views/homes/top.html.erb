@@ -1,0 +1,38 @@
+<div class="main-container">
+  <div class="row">
+    <div class='col-md-10'>
+      <section class="main-visual mt-4">
+        <div class="mv-text">
+          <h3 class=text-center>ようこそHaoPengYouへ <i></i></h3>
+          <p class=text-center>
+            興味のあるイベントをクリックしてイベントに参加しよう！！<br />
+            ※開催日時・開催場所をご確認のうえご予約をお願い致します
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!--新着イベント-->
+  <div class="row mt-4">
+    <section class="new-items col-md-12">
+      <h3><strong>New Event</strong></h3>
+      <div class="row">
+        <% @events.each do |event| %>
+          <div class="col-3">
+            <div class="card border border-2">
+                <%= image_tag event.image.variant(resize_to_fill: [450, 250])%>
+              <div class="card-body">
+                <h6 class="card-title"><strong><%= link_to event.event_name, event_path(event) %></strong></h6>
+                <p class="card-text"><%= event.date %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </div>
+  <div class="col-md-12 text-right">
+    <%= link_to "全てのイベントを見る>", events_path %>
+  </div>
+</div>

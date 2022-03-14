@@ -1,0 +1,104 @@
+<div class="main-container">
+  <div class="row">
+    <div class="col">
+      <h4 class="col-md-2" style="background-color: #eeeeee; display: inline-block; padding:0 20px; font-weight: bold; margin:50px 0;" >マイページ</h4>
+
+
+      <table><tr><td>
+      <div class="form-group" style="display: flex">
+          <h5 class="col-md-4" style="font-weight: bold;">登録情報</h5>
+          <%= link_to"編集する",edit_user_path(@user),class: "btn btn-success" %>
+      </div>
+
+　　　<!--会員情報-->
+      <table border="1" style="margin:10px;">
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">氏名</th>
+         <td style="padding: 15px 10px;"><%= @user.last_name %> <%=@user.first_name%></td>
+       </tr>
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">カナ</th>
+         <td style="padding: 15px 10px;"><%= @user.last_name_kana %> <%=@user.first_name_kana%></td>
+       </tr>
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">国籍</th>
+         <td style="padding: 15px 10px;"><%= @user.nationality %></td>
+       </tr>
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">郵便番号</th>
+         <td style="padding: 15px 10px;"><%= @user.post_code %></td>
+       </tr>
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">住所</th>
+         <td style="padding: 15px 10px;"><%= @user.address %></td>
+       </tr>
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">電話番号</th>
+         <td style="padding: 15px 10px;"><%= @user.phone_number %></td>
+       </tr>
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">メールアドレス</th>
+         <td style="padding: 15px 10px;"><%= @user.email %></td>
+       </tr>
+      </table>
+
+      </td>
+
+
+      <td>
+      <div class="form-group" style="display: flex">
+          <h5 class="col-md-2" style="font-weight: bold;">新規作成</h5>
+          <%= link_to"＋",new_event_path,class: "btn btn-success" %>
+      </div>
+
+　　　<!--会員の作成イベント一覧-->
+      <table class="table-bordered" style="boder-width: thick">
+       <tr style="background-color: red; color: white;">
+         <th style="padding: 10px 20px;">作成日</th>
+         <th style="padding: 10px 20px;">イベント名</th>
+         <th style="padding: 10px 20px;">予約数</th>
+         <th style="padding: 10px 20px;">ステータス</th>
+         <th style="padding: 10px 20px;">イベント詳細</th>
+       </tr>
+
+       <% @user_events.each do |event| %>
+       <tr>
+         <td><%= event.created_at.strftime('%Y/%m/%d') %></td>
+         <td><%= event.event_name %></td>
+         <td></td>
+         <td>
+              <%= form_with model: @event, url: event_path(event.id), method: :put,local:true do |f| %>
+                <%= f.select :event_status, options_for_select(Event.event_statuses_i18n.keys.map {|k| [I18n.t("enums.event.event_status.#{k}"), k]}, selected: event.event_status) %>
+                <%= f.submit '更新', class: 'btn btn-success ml-5' %>
+              <% end %>
+         </td>
+         <td><%= link_to"詳細へ",event_path(event),class: "btn btn-primary" %></td>
+       </tr>
+       <% end %>
+      </table>
+
+
+      <!--会員の予約一覧-->
+      <table class="table table-bordered" style="boder-width: thick">
+       <tr style="background-color: #eeeeee;">
+         <th>予約確定日</th>
+         <th>開催日</th>
+         <th>イベント名</th>
+         <th>内容</th>
+       </tr>
+
+       <% @user_reservations.each do |reservation| %>
+       <tr>
+         <td><%= reservation.created_at.strftime('%Y/%m/%d') %></td>
+         <td><%= reservation.event.date %></td>
+         <td><%= reservation.event.event_name %></td>
+         <td></td>
+         <td><%= link_to"予約詳細",confirm_reservation_path,class: "btn btn-primary" %></td>
+       </tr>
+       <% end %>
+      </table>
+
+      </td></tr></table>
+
+
+    </div>

@@ -1,0 +1,51 @@
+<div class='container'>
+  <div class='row mt-3'>
+    <div class="col-md-12 text-center">
+      <h1>Log in<i class="fas fa-sign-in-alt"></i></h1>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12 pl-4 text-center">
+      <h5>会員の方はこちらからログイン</h5>
+    </div>
+  </div>
+
+<div class="row">
+    <div class='col-md-8 mx-auto'>
+      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+
+
+       <div class="row form-group">
+         <%= f.label :email, class: "col-md-4 col-form-label"  %>
+         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-md-8"  %>
+       </div>
+
+       <div class="row form-group">
+         <%= f.label :password, class: "col-md-4 col-form-label"  %>
+         <%= f.password_field :password, autocomplete: "current-password", class: "form-control col-md-8"  %>
+       </div>
+
+      <% if devise_mapping.rememberable? %>
+       <div class="field">
+         <%= f.check_box :remember_me %>
+         <%= f.label :remember_me %>
+       </div>
+      <% end %>
+
+      <div class="actions">
+         <%= f.submit "Log in" %>
+      </div>
+    <% end %>
+
+   </div>
+  </div>
+  <div class="row ml-md-4 my-4">
+    <div class="col-md-3 pl-4 bg-light text-center">
+      <h5>会員登録がお済でない方</h5>
+    </div>
+  </div>
+  <div class="col-md-6 m-4">
+    <p class="offset-md-3"><%= link_to "こちら", new_user_registration_path %>から新規登録を行ってください。</p>
+  </div>
+</div>
