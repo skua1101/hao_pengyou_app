@@ -11,4 +11,10 @@ Kaminari.configure do |config|
   # config.param_name = :page
   # config.max_pages = nil
   # config.params_on_first_page = false
+
+  config.default_per_page = 8
+
+  Kaminari.configure do |config|
+    config.page_method_name = :kaminari_page
+end
 end

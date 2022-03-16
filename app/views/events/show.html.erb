@@ -6,42 +6,44 @@
     <div class="col-6">
       <h3><strong><%= @event.event_name %></strong></h3>
 
-    <table border="0" style="margin:10px;">
+    <table border="1" style="margin:10px;">
 
       <!--イベント内容-->
        <tr>
-         <th style="padding: 15px 10px;">イベント内容</th>
-         <td style="padding: 15px 10px;"><%= @event.content %></td>
+         <th style="padding: 15px 10px; background-color: #800000; color: white;">イベント内容</th>
+         <td style="padding: 15px 10px;background-color: #ffffff;"><%= @event.content %></td>
        </tr>
 
        <!--開催日時-->
        <tr>
-         <th style="padding: 15px 10px;">開催日</th>
-         <td style="padding: 15px 10px;"><%= @event.date %></td>
+         <th style="padding: 15px 10px; background-color: #800000; color: white;" >開催日</th>
+         <td style="padding: 15px 10px; background-color: #ffffff;"><%= @event.event_date.strftime('%Y/%m/%d %H:%M~') %></td>
        </tr>
 
        <!--ステータス-->
        <tr>
-         <th style="padding: 15px 10px;">ステータス</th>
-         <td style="padding: 15px 10px;"><%= @event.event_status_i18n %></td>
+         <th style="padding: 15px 10px; background-color: #800000; color: white;">ステータス</th>
+         <td style="padding: 15px 10px; background-color: #ffffff;"><%= @event.event_status_i18n %></td>
        </tr>
 
        <!--参加料金-->
        <tr>
-         <th style="padding: 15px 10px;">参加費</th>
-         <td style="padding: 15px 10px;"><%= @event.entry_fee %> </td>
+         <th style="padding: 15px 10px; background-color: #800000; color: white;">参加費</th>
+         <td style="padding: 15px 10px; background-color: #ffffff;"><%= @event.entry_fee %> </td>
        </tr>
 
        <!--参加料金詳細-->
        <tr>
-         <th style="padding: 15px 10px;">参加費詳細</th>
-         <td style="padding: 15px 10px;"><%= @event.entry_fee_detail %> </td>
+         <th style="padding: 15px 10px; background-color: #800000; color: white;">参加費詳細</th>
+         <td style="padding: 15px 10px; background-color: #ffffff;"><%= @event.entry_fee_detail %> </td>
        </tr>
 
        <!--投稿者-->
        <tr>
-         <th style="padding: 15px 10px;">主催者</th>
-         <td style="padding: 15px 10px;"><%= @event.user.last_name %> <%= @event.user.first_name %></td>
+         <th style="padding: 15px 10px; background-color: #800000; color: white;">主催者</th>
+         <td style="padding: 15px 10px; background-color: #ffffff;">
+           <%= @event.user.last_name %> <%= @event.user.first_name %>
+          </td>
        </tr>
       </table>
 
