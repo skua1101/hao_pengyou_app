@@ -2,10 +2,23 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
+    @user_events = @user.events.paginate(page: params[:page], per_page: 4)
+    @user_reservations = @user.reservations.paginate(page: params[:page], per_page: 4)
+
     # 最新の４件のみ取得「.order('id DESC').limit(4)を追加」
-    @user_events = @user.events.order('id DESC').limit(4)
-    @user_reservations = @user.reservations.order('id DESC').limit(4)
+    # @user_events = @user.events.order('id DESC').limit(4)
+    # @user_reservations = @user.reservations.order('id DESC').limit(4)
+  end
+
+  def followed
+    user = User.find(params[:id])
+    @users = user.followings
+  end
+
+  def follower
+    user = User.find(params[:id])
+    @users = user.followers
   end
 
   def edit
@@ -32,5 +45,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :post_code, :address, :phone_number, :email,:nationality )
   end
-
 end

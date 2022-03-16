@@ -1,5 +1,10 @@
 class ReservationsController < ApplicationController
   def index
+
+    # どのイベントに紐づいているのか
+    @event = Event.find(params[:id])
+    # イベントに紐づいている予約のデータ
+    @event_reservation = @event.reservations
   end
 
   def show
@@ -24,6 +29,14 @@ class ReservationsController < ApplicationController
 
   def complete
     @user = current_user
+  end
+
+  def destroy
+     reservation = Reservation.find(params[:id])
+     reservation.user_id = current_user.id
+     reservation.event_id = params[:event_id]
+     reservation.destroy
+     redirect_to user_path(current_user)
   end
 
   private

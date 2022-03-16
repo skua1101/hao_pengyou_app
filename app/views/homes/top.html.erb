@@ -24,7 +24,7 @@
                 <%= image_tag event.image.variant(resize_to_fill: [450, 250])%>
               <div class="card-body">
                 <h6 class="card-title"><strong><%= link_to event.event_name, event_path(event) %></strong></h6>
-                <p class="card-text"><%= event.date %></p>
+                <p class="card-text">開催日：<%= event.event_date.strftime('%Y/%m/%d %H:%M~') %></p>
               </div>
             </div>
           </div>

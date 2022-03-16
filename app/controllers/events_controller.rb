@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @events = Event.kaminari_page(params[:page])
   end
 
   def show
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
     # 取得した event の event_status を更新する
     @event.event_status = params[:event_status]
     @event.save
-    redirect_to user_path
+    redirect_to user_path(current_user)
 
     # @event.update(event_params)
   end
@@ -37,6 +37,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:event_name, :venue, :event_address, :content, :user_id, :date, :image, :entry_fee, :entry_fee_detail, :event_status)
+    params.require(:event).permit(:event_name, :venue, :event_address, :content, :user_id, :event_date, :image, :entry_fee, :entry_fee_detail, :event_status)
   end
 end
