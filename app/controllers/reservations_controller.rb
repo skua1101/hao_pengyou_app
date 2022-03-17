@@ -8,6 +8,10 @@ class ReservationsController < ApplicationController
   end
 
   def show
+    @reservation = Reservation.find(params[:id])
+    @user = @reservation.user
+    @event = @reservation.event
+
   end
 
   def confirm
@@ -32,10 +36,8 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-     reservation = Reservation.find(params[:id])
-     reservation.user_id = current_user.id
-     reservation.event_id = params[:event_id]
-     reservation.destroy
+     @reservation  = Reservation.find(params[:id])
+     @reservation.destroy
      redirect_to user_path(current_user)
   end
 
