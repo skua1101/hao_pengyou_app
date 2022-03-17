@@ -1,7 +1,7 @@
 <div class="main-container">
   <div class="row">
     <div class="col-md-12">
-      <h3 class=text-center style="color: white;">マイページ</h3>
+      <h3 class=text-center style="color: white;">My Page</h3>
 
 
       <table><tr><td>
@@ -124,9 +124,9 @@
        <% @user_reservations.each do |reservation| %>
        <tr>
          <td><%= reservation.created_at.strftime('%Y/%m/%d') %></td>
-         <td><%= reservation.event.event_date %></td>
+         <td><%= reservation.event.event_date.strftime('%Y/%m/%d %H:%M~') %></td>
          <td><%= reservation.event.event_name %></td>
-         <td><%= link_to"予約詳細",confirm_reservation_path,class: "btn btn-primary" %></td>
+         <td><%= link_to"予約詳細",reservation_path(reservation),class: "btn btn-primary" %></td>
        </tr>
        <% end %>
       </table>

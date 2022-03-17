@@ -20,6 +20,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @event.user_id = @event.user.id
   end
 
   def update
