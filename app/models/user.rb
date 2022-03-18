@@ -10,8 +10,9 @@ class User < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :follower
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
   has_many :followers, through: :passive_relationships, source: :followed
-
-  has_many :reserve, through: :reservations, source: :reserved
+  has_many :user_rooms
+  has_many :chats
+  # has_many :reserve, through: :reservations, source: :reserved
 
   def followed_by?(user)
     passive_relationships.find_by(followed_id: user.id).present?
