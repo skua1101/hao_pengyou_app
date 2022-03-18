@@ -1,7 +1,7 @@
 <div class="main-container">
   <div class="row">
     <div class="col-md-12">
-      <h3 class=text-center style="color: white;">My Page</h3>
+      <h3 class=text-center style="color: white;">User Page</h3>
 
 
       <table><tr><td>
@@ -70,6 +70,11 @@
           <% else %>
               <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-success" %>
           <% end %></td>
+
+          <td style="border:none;">
+           <% if current_user != @user %>
+              <%= link_to 'chatを始める', chat_path(@user.id), class: "btn btn-primary"%>
+            <% end %></td>
         </tr>
       <% end %>
       </table>
@@ -81,7 +86,11 @@
 　　　<!--会員の作成イベント一覧-->
 　　　<div style="display: flex;">
 　　　   <div style="margin: 5px 0px; font-weight:bold;">作成済みイベント</div>
-　　　   <div class="pull-right" style="margin: 5px 0px;font-weight:bold;">新規作成<%= link_to"＋",new_event_path,class: "btn btn-success" %></div>
+　　　   <div class="pull-right" style="margin: 5px 0px;font-weight:bold;">
+　　　     <% if @user == current_user %>
+　　　      新規作成<%= link_to"＋",new_event_path,class: "btn btn-success" %>
+　　　     <% end %>
+　　　   </div>
       </div>
       <table class="table-bordered" style="boder-width: thick; background-color: #ffffff; margin: 0px 50px;">
        <tr style="background-color: red; color: white;">
@@ -89,25 +98,40 @@
          <th style="padding: 10px 20px;">イベント名</th>
          <th style="padding: 10px 20px;">予約数</th>
          <th style="padding: 10px 20px;">ステータス</th>
-         <th style="padding: 10px 20px;">イベント詳細</th>
+         <th style="padding: 10px 20px;"></th>
        </tr>
        <% @user_events.each do |event| %>
        <tr>
          <td><%= event.created_at.strftime('%Y/%m/%d') %></td>
          <td><%= event.event_name %></td>
-         <td><%= link_to event.reservations.count, reservations_path(id: event.id) %></td>
          <td>
+           <% if @user == current_user %>
+                <%= link_to event.reservations.count, reservations_path(id: event.id) %></td>
+           <% else %>
+                <%= event.reservations.count %>
+           <% end %>
+         <td>
+           <% if @user == current_user %>
               <%= form_with model: @event, url: event_path(event.id), method: :put,local:true do |f| %>
                 <%= f.select :event_status, options_for_select(Event.event_statuses_i18n.keys.map {|k| [I18n.t("enums.event.event_status.#{k}"), k]}, selected: event.event_status) %>
                 <%= f.submit '更新', class: 'btn btn-success ml-5' %>
               <% end %>
+           <% else %>
+                <%= @user_events.event_statuses %>
+           <% end %>
          </td>
-         <td><%= link_to"詳細へ",event_path(event),class: "btn btn-primary" %></td>
+         <td style = "padding: 5px 20px;">
+          <% if @user == current_user %>
+           <%= link_to"詳細へ",event_path(event),class: "btn btn-primary" %>
+          <% else %>
+           <%= link_to"予約",event_path(event),class: "btn btn-primary" %>
+          <% end %>
+         </td>
        </tr>
        <% end %>
       </table>
       <div class="col-md-12 text-right" style="margin: 0px 50px;">
-         <%= will_paginate @user_events, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+         <%= paginate @user_events %>
       </div>
 
 
@@ -131,7 +155,7 @@
        <% end %>
       </table>
       <div class="col-md-12 text-right" style="margin:0px 50px;">
-         <%= will_paginate @user_events, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+         <%= paginate @user_reservations %>
       </div>
 
       </td></tr></table>
