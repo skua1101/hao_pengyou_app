@@ -10,11 +10,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="d-flex flex-column vh-100">
+  <body class="d-flex flex-column vh-100" >
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <%= link_to " HaoPengYou", root_path, class: "glyphicon glyphicon-top" %>
+          <a class="navbar-brand" href="/"><%= image_tag 'rogo.jpg', :size =>'90x90'%></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -23,28 +23,28 @@
       	  <ul class="nav navbar-nav ml-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
-                <span class="nav-link text-dark">ようこそ、<%= current_user.last_name %>さん</span>
+                <span class="nav-link text-white">ようこそ、<%= current_user.last_name %>さん</span>
               </li>
               <li class="nav-item" >
-                <%= link_to root_path, class: 'btn btn-warning' do %>
+                <%= link_to root_path, class: 'btn btn-light btn-lg' do %>
                 <span class="fas fa-home"></span>
                  Home
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to user_path(current_user), class: 'btn btn-warning' do %>
+                <%= link_to user_path(current_user), class: 'btn btn-light btn-lg' do %>
                 <span class="fas fa-users"></span>
                  My page
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to  events_path, class: 'btn btn-warning' do %>
+                <%= link_to  events_path, class: 'btn btn-light btn-lg' do %>
                 <span class="fas fa-book-open"></span>
                 Event
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-warning' do %>
+                <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-light btn-lg' do %>
                 <span class="fas fa-sign-out-alt"></span>
                  Log out
                 <% end %>
@@ -52,31 +52,31 @@
 
             <% else %>
               <li class="nav-item">
-                <%= link_to root_path, class: 'btn btn-warning' do %>
+                <%= link_to root_path, class: 'btn btn-light btn-lg' do %>
                 <span class="fas fa-home"></span>
                  Home
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to about_path, class: 'btn btn-warning' do %>
+                <%= link_to about_path, class: 'btn btn-light' do %>
                 <span class="fas fa-link"></span>
                  About
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to events_path, class: 'btn btn-warning' do %>
+                <%= link_to events_path, class: 'btn btn-light btn-lg' do %>
                 <span class="fas fa-events"></span>
                  Event
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to new_user_registration_path, class: 'btn btn-warning' do %>
+                <%= link_to new_user_registration_path, class: 'btn btn-light btn-lg' do %>
                 <span class="fas fa-user-plus"></span>
                  Sign up
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to user_session_path do %>
+                <%= link_to user_session_path, class: 'btn btn-light btn-lg'  do %>
                 <span class="fas fa-sign-in-alt"></span>
                  Log in
                 <% end %>

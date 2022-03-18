@@ -1,2 +1,48 @@
-<h1>Reservations#show</h1>
-<p>Find me in app/views/reservations/show.html.erb</p>
+<div class="main-container">
+  <div class="row">
+    <h3>予約内容確認</h3>
+  </div>
+
+
+  <table border="1" style="margin:10px;">
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">名前</th>
+         <td style="padding: 15px 10px;"><%= @user.last_name %> <%=@user.first_name%></td>
+       </tr>
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">カナ</th>
+         <td style="padding: 15px 10px;"><%= @user.last_name_kana %> <%=@user.first_name_kana%></td>
+       </tr>
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">国籍</th>
+         <td style="padding: 15px 10px;"><%= @user.nationality %></td>
+       </tr>
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">連絡先</th>
+         <td style="padding: 15px 10px;"><%= @user.phone_number %></td>
+       </tr>
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">イベント名</th>
+         <td style="padding: 15px 10px;"><%= @event.event_name %></td>
+       </tr>
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">内容</th>
+         <td style="padding: 15px 10px;"><%= @event.content %></td>
+       </tr>
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">開催日</th>
+         <td style="padding: 15px 10px;"><%= @event.event_date.strftime('%Y/%m/%d %H:%M~') %></td>
+       </tr>
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">ステータス</th>
+         <td style="padding: 15px 10px;"><%= @event.event_status_i18n %></td>
+       </tr>
+       <tr>
+         <th style="padding: 15px 10px; background-color: #eeeeee;">参加料金</th>
+         <td style="padding: 15px 10px;"><%= @event.entry_fee %> （<%= @event.entry_fee_detail %>）</td>
+       </tr>
+      </table>
+
+      <%= link_to"予約キャンセル",reservation_path(@reservation), method: :delete, class: "btn btn-success" %>
+
+</div>

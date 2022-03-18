@@ -1,2 +1,22 @@
-<h1>Reservations#index</h1>
-<p>Find me in app/views/reservations/index.html.erb</p>
+<div class="main-container">
+  <div class="row">
+   <div class="col-5 pl-3">
+
+     <table class="table table-sm">
+      <thead>
+        <th>名前</th>
+        <th>国籍</th>
+        <th colspan="4"></th>
+      </thead>
+      <tbody>
+        <% @event_reservation.each do |reservation| %>
+         <tr>
+          <td><%= reservation.user.last_name %></td>
+          <td><%= reservation.user.nationality %></td>
+         </tr>
+        <% end %>
+      </tbody>
+     </table>
+   </div>
+  </div>
+</div>

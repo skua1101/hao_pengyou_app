@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :events, only: [:new,:index,:show,:create, :update]
 
-  resources :reservations, only: [:index,:show,:create]do
+  resources :reservations, only: [:index,:show,:create, :destroy]do
    member do
       get 'confirm'
     end

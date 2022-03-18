@@ -1,4 +1,4 @@
-<div class="container">
+<div class="main-container">
   <div class="row">
     <h3>予約内容確認</h3>
   </div>
@@ -31,7 +31,7 @@
        </tr>
        <tr>
          <th style="padding: 15px 10px; background-color: #eeeeee;">開催日</th>
-         <td style="padding: 15px 10px;"><%= @event.date %></td>
+         <td style="padding: 15px 10px;"><%= @event.event_date.strftime('%Y/%m/%d %H:%M~') %></td>
        </tr>
        <tr>
          <th style="padding: 15px 10px; background-color: #eeeeee;">ステータス</th>
