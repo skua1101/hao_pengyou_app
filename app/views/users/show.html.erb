@@ -21,6 +21,7 @@
          <th style="padding: 15px 10px; background-color: #eeeeee;">国籍</th>
          <td style="padding: 15px 10px;"><%= @user.nationality %></td>
        </tr>
+        <% if @user == current_user %>
        <tr>
          <th style="padding: 15px 10px; background-color: #eeeeee;">郵便番号</th>
          <td style="padding: 15px 10px;"><%= @user.post_code %></td>
@@ -37,6 +38,8 @@
          <th style="padding: 15px 10px; background-color: #eeeeee;">メールアドレス</th>
          <td style="padding: 15px 10px;"><%= @user.email %></td>
        </tr>
+       <%end%>
+
       </table>
 
 <!--フォロー機能-->
@@ -136,6 +139,7 @@
 
 
       <!--会員の予約一覧-->
+      <% if @user == current_user %>
       <div style="margin: 5px 50px; font-weight:bold;">予約済みイベント</div>
       <table class="table-bordered" style="boder-width: thick; background-color: #ffffff; margin: 0px 50px 0px 50px;">
        <tr style="background-color: red; color: white;">
@@ -157,6 +161,7 @@
       <div class="col-md-12 text-right" style="margin:0px 50px;">
          <%= paginate @user_reservations %>
       </div>
+      <%end%>
 
       </td></tr></table>
 

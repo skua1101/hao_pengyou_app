@@ -1,5 +1,12 @@
 class ChatsController < ApplicationController
+  def index
+    @my_chats=current_user.chats
+    @chat_partners=User.where.not(id:current_user.id)#自分以外
+  end
+
   def show
+    @my_chats=current_user.chats
+    @chat_partners=User.where.not(id:current_user.id)#自分以外
     # どのユーザーとチャットするかを取得。
     @user = User.find(params[:id])
 
@@ -27,6 +34,7 @@ class ChatsController < ApplicationController
   @chats = @room.chats
   @chat = Chat.new(room_id: @room.id)
   end
+
 
   def create
     @chat = current_user.chats.new(chat_params)
