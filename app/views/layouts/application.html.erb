@@ -37,10 +37,25 @@
                  My page
                 <% end %>
               </li>
+
+              <li class="nav-item">
+                <%= link_to notifications_path, class: 'btn btn-light btn-lg' do %>
+                <span class="fas fa-users"></span>
+                 Notice
+                <% end %>
+              </li>
+
+
               <li class="nav-item">
                 <%= link_to  events_path, class: 'btn btn-light btn-lg' do %>
                 <span class="fas fa-book-open"></span>
                 Event
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to  chats_path, class: 'btn btn-light btn-lg' do %>
+                <span class="fas fa-book-open"></span>
+                chat
                 <% end %>
               </li>
               <li class="nav-item">
