@@ -1,9 +1,9 @@
 class Chat < ApplicationRecord
   belongs_to :user
   belongs_to :room
-  
+
   has_many :notifications, dependent: :destroy
-  
+
   def create_notification_chat!(current_user, chat_id, room_id, visited_id)
     # チャットしている相手を取得し、通知を送る
     temp_ids = Chat.select(:user_id).where(room_id: room_id).where.not(user_id: current_user.id).distinct
