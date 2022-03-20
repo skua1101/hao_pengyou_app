@@ -1,4 +1,5 @@
-<div class="text-center">
+<div class="notice-container">
+ <div class="text-center">
   <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
   <!--自分の投稿に対するいいね、コメントは通知に表示しない-->
 
@@ -8,4 +9,5 @@
   <% else %>
    <p>通知はありません</p>
   <% end %>
+ </div>
 </div>

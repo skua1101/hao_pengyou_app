@@ -12,7 +12,7 @@
          <th style="padding: 15px 10px; background-color: #800000; color: white;">イベント名</th>
          <td style="padding: 15px 10px;background-color: #ffffff;"><%= @event.event_name %></td>
        </tr>
-      
+
        <tr>
          <th style="padding: 15px 10px; background-color: #800000; color: white;">イベント内容</th>
          <td style="padding: 15px 10px;background-color: #ffffff;"><%= @event.content %></td>
@@ -50,10 +50,11 @@
           </td>
        </tr>
       </table>
-
+     <% if @event.user != current_user %>
       <div class=col-6 style = "margin-bottom: 50px;">
         <%= link_to"予約する",confirm_reservation_path,class: "btn btn-primary" %>
       </div>
+    <% end %>
     </div>
   </div>
 </div>
