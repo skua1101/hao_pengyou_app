@@ -1,6 +1,12 @@
-<div class="main-container">
-      <h3 class=text-center style="color: white;">Chat Page</h3>
-      <h2 style="text-align:center"><%="#{@user.last_name}さんとのチャット"%></h2>
+<div class="chat-container">
+  <div class='col-md-12'>
+      <section class="main-visual mt-4">
+        <div class="mv-text">
+          <h1 class=text-center style="color: white;"> Chat room <i></i></h1>
+        </div>
+      </section>
+    </div>
+      <h4 style="text-align:center; color: white;"><%="#{@user.last_name}さんとのchat"%></h4>
 
 <!--チャット一覧-->
 <%= render 'index'%>

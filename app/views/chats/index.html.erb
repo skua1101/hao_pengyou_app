@@ -1,9 +1,21 @@
-<table class="rooms">
-  <tbody>
+<div class= "chat-container">
+ <div class='col-md-12'>
+  <section class="main-visual mt-4">
+    <div class="mv-text">
+      <h1 class=text-center style="color: white;"> Chat <i></i></h1>
+    </div>
+  </section>
+ </div>
+
+ <div class="text-center">
+  <table class="rooms">
+   <tbody>
     <tr>
         <% @chat_partners.each do |chat_partner| %>
-          <%=link_to "#{chat_partner.last_name}さんとのトークルーム","/chat/#{chat_partner.id}"%> </br>
+          <%=link_to "ChatRoom #{chat_partner.last_name}さんへ","/chat/#{chat_partner.id}"%> </br>
         <%end%>
     </tr>
-  </tbody>
-</table>
+   </tbody>
+  </table>
+ </div>
+</div>
