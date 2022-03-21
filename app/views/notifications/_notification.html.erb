@@ -3,7 +3,7 @@
 
 <div class='col-md-6 mx-auto'>
   <div class="form-inline border-bottom mb-3">
-    <%= link_to "#{visitor.last_name}",user_path(visitor) %>
+    <%= link_to "#{visitor.last_name} #{visitor.first_name}",user_path(visitor) %>
     <%= "さんが" %>
     <% case notification.action %>
       <% when 'follow' then %>

@@ -49,7 +49,7 @@
 <!--フォロー機能-->
       <table class="table_news" style="boder-width: thick; margin: 0px 50px;">
         <tr>
-      <th>follows</th>
+      <th style= "font-weight:bold; color: #ffffff;">follows</th>
       <td>
         <%= link_to followed_user_path(@user) do %>
           <%= @user.active_relationships.count %>
@@ -57,7 +57,7 @@
       </td>
     </tr>
     <tr>
-      <th>followers</th>
+      <th style= "font-weight:bold; color: #ffffff;">followers</th>
       <td>
         <%= link_to follower_user_path(@user) do %>
           <%= @user.passive_relationships.count %></td>
@@ -73,14 +73,14 @@
         <tr>
           <td style="border:none;">
           <% if @user.followed_by?(current_user) %>
-            <%= link_to "フォロー外す", user_relationships_path(@user), method: :delete, class: "btn btn-primary" %>
+            <%= link_to "Follow外す", user_relationships_path(@user), method: :delete, class: "btn btn-primary" %>
           <% else %>
-              <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-success" %>
+              <%= link_to "Followする", user_relationships_path(@user), method: :post, class: "btn btn-success" %>
           <% end %></td>
 
           <td style="border:none;">
            <% if current_user != @user %>
-              <%= link_to 'chatを始める', chat_path(@user.id), class: "btn btn-primary"%>
+              <%= link_to 'Chatを送る', chat_path(@user.id), class: "btn btn-primary"%>
             <% end %></td>
         </tr>
       <% end %>
@@ -93,9 +93,9 @@
 　　　<!--会員の作成イベント一覧-->
 　　　<div style="display: flex;">
 　　　   <div style="margin: 5px 0px; font-weight:bold; color: #ffffff;"><h3>Events</h3></div>
-　　　   <div class="pull-right" style="margin: 5px 0px;font-weight:bold;">
+　　　   <div style="margin: 0px;font-weight:bold;">
 　　　     <% if @user == current_user %>
-　　　      新規作成<%= link_to"＋",new_event_path,class: "btn btn-success" %>
+　　　      <%= link_to"＋New Event",new_event_path,class: "btn btn-success" %>
 　　　     <% end %>
 　　　   </div>
       </div>
@@ -109,9 +109,9 @@
        </tr>
        <% @user_events.each do |event| %>
        <tr>
-         <td><%= event.created_at.strftime('%Y/%m/%d') %></td>
-         <td><%= event.event_name %></td>
-         <td>
+         <td class= "event_data"><%= event.created_at.strftime('%Y/%m/%d') %></td>
+         <td class= "event_data"><%= event.event_name %></td>
+         <td class= "event_data">
            <% if @user == current_user %>
                 <%= link_to event.reservations.count, reservations_path(id: event.id) %></td>
            <% else %>
@@ -155,10 +155,10 @@
 
        <% @user_reservations.each do |reservation| %>
        <tr>
-         <td><%= reservation.created_at.strftime('%Y/%m/%d') %></td>
-         <td><%= reservation.event.event_date.strftime('%Y/%m/%d %H:%M~') %></td>
-         <td><%= reservation.event.event_name %></td>
-         <td><%= link_to"予約詳細",reservation_path(reservation),class: "btn btn-primary" %></td>
+         <td class= "event_data"><%= reservation.created_at.strftime('%Y/%m/%d') %></td>
+         <td class= "event_data"><%= reservation.event.event_date.strftime('%Y/%m/%d %H:%M~') %></td>
+         <td class= "event_data"><%= reservation.event.event_name %></td>
+         <td class= "event_data" style = "padding: 5px 20px;"><%= link_to"予約詳細",reservation_path(reservation),class: "btn btn-primary" %></td>
        </tr>
        <% end %>
       </table>
