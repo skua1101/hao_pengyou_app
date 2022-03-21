@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user_events = @user.events.kaminari_page(params[:page]).per(4)
     @user_reservations = @user.reservations.kaminari_page(params[:page]).per(4)
 
+
     # 最新の４件のみ取得「.order('id DESC').limit(4)を追加」
     # @user_events = @user.events.order('id DESC').limit(4)
     # @user_reservations = @user.reservations.order('id DESC').limit(4)

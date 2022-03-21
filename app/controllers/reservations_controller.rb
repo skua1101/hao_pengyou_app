@@ -5,6 +5,7 @@ class ReservationsController < ApplicationController
     @event = Event.find(params[:id])
     # イベントに紐づいている予約のデータ
     @event_reservation = @event.reservations
+   
   end
 
   def show
