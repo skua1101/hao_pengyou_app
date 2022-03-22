@@ -1,11 +1,11 @@
-<table class="rooms">
-  <tbody>
+<div class="mb-3">
+  <table class="rooms">
+   <tbody>
     <tr>
-      <td>
-        <%@chat_partners.each do |chat_partner|%>
-          <%=link_to "#{chat_partner.last_name}さんとのトークルーム","/chat/#{chat_partner.id}"%>
+        <% @chat_partners.each do |chat_partner| %>
+          <%=link_to "ChatRoom #{chat_partner.last_name}さんへ","/chat/#{chat_partner.id}" %> </br>
         <%end%>
-      </td>
     </tr>
-  </tbody>
-</table>
+   </tbody>
+  </table>
+</div>

@@ -18,6 +18,16 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   # has_many :reserve, through: :reservations, source: :reserved
+  
+  
+  validates :last_name, presence: true, format:{ with:  /\A[一-龥]+\z/}
+  validates :first_name, presence: true, format:{ with:  /\A[一-龥]+\z/}
+  validates :last_name_kana, presence: true,format:{ with:  /\A[ァ-ヶー－]+\z/}
+  validates :first_name_kana, presence: true,format:{ with:  /\A[ァ-ヶー－]+\z/}
+  validates :post_code, presence: true, format:{ with:  /\A\d{7}\z/}
+  validates :address, presence:true
+  validates :phone_namber, presence: true,format:{ with:  /\A\d{10,11}\z/}
+
 
   def followed_by?(user)
     passive_relationships.find_by(followed_id: user.id).present?

@@ -1,4 +1,7 @@
 class ChatsController < ApplicationController
+
+   before_action :authenticate_user!
+
   def index
     @my_chats=current_user.chats
     @chat_partners=User.where.not(id:current_user.id)#自分以外
@@ -42,6 +45,14 @@ class ChatsController < ApplicationController
     # @chat.create_notification_chat!(current_user, room_id, chat_id, visited_id)
     redirect_to request.referer
   end
+
+  def destroy
+    @chat = Chat.find(params[:id])
+    @chat.destroy
+    # @chat.create_notification_chat!(current_user, room_id, chat_id, visited_id)
+    redirect_to request.referer
+  end
+
 
   private
   def chat_params

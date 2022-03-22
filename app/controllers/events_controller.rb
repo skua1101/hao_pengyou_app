@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+
+   before_action :authenticate_user!, except: [:index, :show]
+
   def new
     @event = Event.new
   end
@@ -7,7 +10,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user_id =current_user.id
     if@event.save
-      # flash[:notice] = "#{@event.event_name}作成しました。"
+      flash[:notice] = "#{@event.event_name}作成しました。"
       redirect_to user_path(current_user)
     else
       render :new
@@ -30,6 +33,7 @@ class EventsController < ApplicationController
     # 取得した event の event_status を更新する
     @event.event_status = params[:event_status]
     @event.save
+    flash[:notice] = "#{@event.event_name}のステータスを更新しました。"
     redirect_to user_path(current_user)
 
     # @event.update(event_params)

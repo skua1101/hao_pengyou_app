@@ -1,23 +1,26 @@
 <div class="chat-container">
+  <div class="row">
   <div class='col-md-12'>
       <section class="main-visual mt-4">
         <div class="mv-text">
-          <h1 class=text-center style="color: white;"> Chat room <i></i></h1>
+          <h1 class=text-center style="color: white;"> Chat room(<%="#{@user.last_name}さんとのchat"%>) </h1>
         </div>
       </section>
     </div>
-      <h4 style="text-align:center; color: white;"><%="#{@user.last_name}さんとのchat"%></h4>
 
 <!--チャット一覧-->
-<!--<%= render 'index'%>-->
+<div class='col-md-4' style="text-align: right;">
+ <%= render 'index'%>
+</div>
 
 <!--チャットルーム-->
- <div claass="chat_room";>
+ <div class='col' style="padding: 0px;">
   <div id="chats">
    <% @chats.each do |chat|%>
     <%if chat.user_id==current_user.id%>
       <div class="mycomment">
-        <p><%=chat.message%></p>
+        <p><%=chat.message%></p><br>
+         <%= link_to"削除","/chats/#{chat.id}", method: :delete %>
       </div>
     <%else%>
       <div class="fukidasi">
@@ -41,4 +44,5 @@
    <% end %>
   </div>
  </div>
+</div>
 </div>
