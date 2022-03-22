@@ -101,10 +101,15 @@
         </nav>
       </div>
     </header>
+    <% if flash[:notice] %>
+      <div class="notification text-info">
+       <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
 
   <div class="body">
-      <p class="notice"><%= notice %></p>
       <%= yield %>
+      
      <footer>
        <p class="text-center"> Suzuki Kazuya</p>
      </footer>

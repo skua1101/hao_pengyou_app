@@ -7,6 +7,7 @@
          <th style="padding: 10px 20px;">名前</th>
          <th style="padding: 10px 20px;">フリガナ</th>
          <th style="padding: 10px 20px;">国籍</th>
+         <th style="padding: 10px 20px;"></th>
          <th colspan="4"></th>
      </tr>
   </thead>
@@ -17,9 +18,9 @@
          <td style="padding: 10px 20px;"><%= reservation.user.last_name %> <%= reservation.user.first_name %></td>
          <td style="padding: 10px 20px;"><%= reservation.user.last_name_kana %> <%= reservation.user.first_name_kana %></td>
          <td style="padding: 10px 20px;"><%= reservation.user.nationality %></td>
+         <td><%= link_to "Show", "/users/#{reservation.user.id}" %></td>
        </tr>
        <% end %>
   </tbody>
 </table>
 
-　　
