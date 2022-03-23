@@ -1,10 +1,15 @@
 <div class="main-container">
   <div class="row">
-    <h3>予約内容確認</h3>
-  </div>
+    <div class='col-md-12'>
+      <section class="main-visual mt-4">
+        <div class="mv-text">
+          <h1 class=text-center style="color: white;"> Reservation confirm <i></i></h1>
+        </div>
+      </section>
+    </div>
 
-
-  <table border="1" style="margin:10px;">
+   <div class='col-md-12'>
+    <table border="1" style="margin:10px; background-color: white;">
        <tr>
          <th style="padding: 15px 10px; background-color: #eeeeee;">名前</th>
          <td style="padding: 15px 10px;"><%= @user.last_name %> <%=@user.first_name%></td>
@@ -42,17 +47,10 @@
          <td style="padding: 15px 10px;"><%= @event.entry_fee %> （<%= @event.entry_fee_detail %>）</td>
        </tr>
       </table>
-
-      <div>
-          <%= link_to"予約完了",reservations_path(event_id: @event.id), method: :post, class: "btn btn-success" %>
-      </div>
-
-
-
-
-
-
-
-
-
+   　<%= link_to reservations_path(event_id: @event.id), method: :post do %>
+       　<div class="btn" style = "margin-bottom: 50px;">
+        　<span>予約完了</span>
+         </div>
+      <% end %>
 </div>
+

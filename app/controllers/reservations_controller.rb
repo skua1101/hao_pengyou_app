@@ -1,10 +1,13 @@
 class ReservationsController < ApplicationController
-  def index
 
+   before_action :authenticate_user!
+
+  def index
     # どのイベントに紐づいているのか
     @event = Event.find(params[:id])
     # イベントに紐づいている予約のデータ
     @event_reservation = @event.reservations
+
   end
 
   def show
@@ -25,6 +28,7 @@ class ReservationsController < ApplicationController
     @reservation.event_id = params[:event_id]
 
     if@reservation.save
+      flash[:notice] = "イベントの予約を完了しました。"
       redirect_to complete_reservations_path
     else
       render confirm_reservation_path
@@ -38,6 +42,7 @@ class ReservationsController < ApplicationController
   def destroy
      @reservation  = Reservation.find(params[:id])
      @reservation.destroy
+     flash[:notice] = "#{@reservation.event.event_name}の予約をキャンセルしました。"
      redirect_to user_path(current_user)
   end
 

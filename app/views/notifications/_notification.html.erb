@@ -1,0 +1,17 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+
+<div class='col-md-6 mx-auto'>
+  <div class="form-inline border-bottom mb-3">
+    <%= link_to "#{visitor.last_name} #{visitor.first_name}",user_path(visitor) %>
+    <%= "さんが" %>
+    <% case notification.action %>
+      <% when 'follow' then %>
+        <%= "あなたをフォローしました" %>
+      <% when 'chat' then %>
+        <%= link_to 'あなたにメッセージ', room_path(visitor.id), style:"font-weight: bold;", class: "border-bottom" %>
+        <%= "を送りました" %>
+    <% end %>
+    <span><%= " (#{time_ago_in_words(notification.created_at)}前)" %></span><br>
+  </div>
+</div>

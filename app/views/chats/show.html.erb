@@ -1,0 +1,48 @@
+<div class="chat-container">
+  <div class="row">
+  <div class='col-md-12'>
+      <section class="main-visual mt-4">
+        <div class="mv-text">
+          <h1 class=text-center style="color: white;"> Chat room(<%="#{@user.last_name}さんとのchat"%>) </h1>
+        </div>
+      </section>
+    </div>
+
+<!--チャット一覧-->
+<div class='col-md-4' style="text-align: right;">
+ <%= render 'index'%>
+</div>
+
+<!--チャットルーム-->
+ <div class='col' style="padding: 0px;">
+  <div id="chats">
+   <% @chats.each do |chat|%>
+    <%if chat.user_id==current_user.id%>
+      <div class="mycomment">
+        <p><%=chat.message%></p><br>
+         <%= link_to"削除","/chats/#{chat.id}", method: :delete %>
+      </div>
+    <%else%>
+      <div class="fukidasi">
+        <div class="faceicon">
+          <img src="/assets/faceicon.png" alt="相手">
+        </div>
+        <div class="chatting">
+          <div class="says">
+            <p><%=chat.message%></p>
+          </div>
+        </div>
+      </div>
+    <%end%>
+   <%end%>
+  </div>
+  <div class = "send_form">
+   <%= form_with model: @chat do |f| %>
+      <%= f.text_field :message %>
+      <%= f.hidden_field :room_id %>
+      <%= f.submit "送信" %>
+   <% end %>
+  </div>
+ </div>
+</div>
+</div>

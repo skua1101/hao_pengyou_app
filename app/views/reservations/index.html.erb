@@ -1,22 +1,26 @@
-<div class="main-container">
-  <div class="row">
-   <div class="col-5 pl-3">
+<h2> Reservation User</h2>
+<div  class="text-center" style="color: white"><%= @event.event_name %></div>
+<table class="table table-sm">
+  <thead>
+     <tr>
+         <th style="padding: 10px 20px;">予約確定日</th>
+         <th style="padding: 10px 20px;">名前</th>
+         <th style="padding: 10px 20px;">フリガナ</th>
+         <th style="padding: 10px 20px;">国籍</th>
+         <th style="padding: 10px 20px;"></th>
+         <th colspan="4"></th>
+     </tr>
+  </thead>
+  <tbody>
+   <% @event_reservation.each do |reservation| %>
+    <tr>
+         <td style="padding: 10px 20px;"><%= reservation.created_at.strftime('%Y/%m/%d %H:%M~') %></td>
+         <td style="padding: 10px 20px;"><%= reservation.user.last_name %> <%= reservation.user.first_name %></td>
+         <td style="padding: 10px 20px;"><%= reservation.user.last_name_kana %> <%= reservation.user.first_name_kana %></td>
+         <td style="padding: 10px 20px;"><%= reservation.user.nationality %></td>
+         <td><%= link_to "Show", "/users/#{reservation.user.id}" %></td>
+       </tr>
+       <% end %>
+  </tbody>
+</table>
 
-     <table class="table table-sm">
-      <thead>
-        <th>名前</th>
-        <th>国籍</th>
-        <th colspan="4"></th>
-      </thead>
-      <tbody>
-        <% @event_reservation.each do |reservation| %>
-         <tr>
-          <td><%= reservation.user.last_name %></td>
-          <td><%= reservation.user.nationality %></td>
-         </tr>
-        <% end %>
-      </tbody>
-     </table>
-   </div>
-  </div>
-</div>

@@ -1,0 +1,11 @@
+<div class="mb-3">
+  <table class="rooms">
+   <tbody>
+    <tr>
+        <% @chat_partners.each do |chat_partner| %>
+          <%=link_to "ChatRoom #{chat_partner.last_name}さんへ","/chat/#{chat_partner.id}" %> </br>
+        <%end%>
+    </tr>
+   </tbody>
+  </table>
+</div>

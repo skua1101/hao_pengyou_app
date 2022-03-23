@@ -14,15 +14,35 @@
  *= require_self
  */
 .main-container {
-  background-image: image-url('994844.jpg');
+  background-image: image-url('haikei_hotel.jpg');
   background-size: cover;
 }
 
 header {
-  background-color: red;
+  background-color: #550000;
   background-size: cover;
 }
 
 .nav-item{
-  padding: 5px;
+  padding: px;
+}
+
+.user-container {
+  background-image: image-url('haikei_cake.jpg');
+  background-size: cover;
+}
+
+.notice-container {
+  background-image: image-url('haikei_heart.jpg');
+  background-size: cover;
+}
+
+.event-container {
+  background-image: image-url('haikei_soccer.jpg');
+  background-size: cover;
+}
+
+.chat-container {
+  background-image: image-url('haikei_garden.jpg');
+  background-size: cover;
 }

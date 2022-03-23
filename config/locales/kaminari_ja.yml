@@ -1,0 +1,7 @@
+ja:
+ views:
+  pagenation:
+   first: "&laquo; 最初"
+   first: "最後 &raquo;"
+   first: "&lsaquo; 前"
+   first: "次 &raaquo;"

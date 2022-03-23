@@ -3,8 +3,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user_events = @user.events.paginate(page: params[:page], per_page: 4)
-    @user_reservations = @user.reservations.paginate(page: params[:page], per_page: 4)
+    @user_events = @user.events.kaminari_page(params[:page]).per(4)
+    @user_reservations = @user.reservations.kaminari_page(params[:page]).per(4)
+
 
     # 最新の４件のみ取得「.order('id DESC').limit(4)を追加」
     # @user_events = @user.events.order('id DESC').limit(4)
