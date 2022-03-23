@@ -21,7 +21,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :first_name_kana, null: false
       t.string :post_code, null: false
       t.string :address, null: false
-      t.string :phone_namber, null: false
+      t.string :phone_number, null: false
       t.string :nationality, null: false
 
       ## Trackable
