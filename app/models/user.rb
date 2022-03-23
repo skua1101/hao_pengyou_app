@@ -26,7 +26,7 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true,format:{ with:  /\A[ァ-ヶー－]+\z/}
   validates :post_code, presence: true, format:{ with:  /\A\d{7}\z/}
   validates :address, presence:true
-  validates :phone_namber, presence: true,format:{ with:  /\A\d{10,11}\z/}
+  validates :phone_number, presence: true,format:{ with:  /\A\d{10,11}\z/}
 
 
   def followed_by?(user)
