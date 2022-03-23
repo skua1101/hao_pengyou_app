@@ -51,9 +51,11 @@
        </tr>
       </table>
      <% if @event.user != current_user %>
-      <div class=col-6 style = "margin-bottom: 50px;">
-        <%= link_to"予約する",confirm_reservation_path,class: "btn btn-primary" %>
+      <%= link_to confirm_reservation_path do %>
+       <div class="btn" style = "margin-bottom: 50px;">
+        <span>予約する</span>
       </div>
+      <% end %>
     <% end %>
     </div>
   </div>

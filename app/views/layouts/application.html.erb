@@ -22,43 +22,42 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
       	  <ul class="nav navbar-nav ml-auto">
             <% if user_signed_in? %>
-              <li class="nav-item" >
-                <%= link_to root_path, class: 'btn btn-light btn-lg' do %>
-                <span class="fas fa-home"></span>
-                 Home
+              <li class="nav-item">
+                <%= link_to root_path, class: 'hbtn' do %>
+                <span class="fas fa-home">Home</span>
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to user_path(current_user), class: 'btn btn-light btn-lg' do %>
-                <span class="fas fa-users"></span>
-                 My page
+                <%= link_to user_path(current_user), class: 'hbtn' do %>
+                <span class="fas fa-users">My page</span>
+
                 <% end %>
               </li>
 
               <li class="nav-item">
-                <%= link_to notifications_path, class: 'btn btn-light btn-lg' do %>
-                <span class="fas fa-users"></span>
-                 Notice
+                <%= link_to notifications_path, class: 'hbtn' do %>
+                <span class="fas fa-users">Notice</span>
+
                 <% end %>
               </li>
 
 
               <li class="nav-item">
-                <%= link_to  events_path, class: 'btn btn-light btn-lg' do %>
-                <span class="fas fa-book-open"></span>
-                Event
+                <%= link_to  events_path, class: 'hbtn' do %>
+                <span class="fas fa-book-open"> Event</span>
+
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to  chats_path, class: 'btn btn-light btn-lg' do %>
-                <span class="fas fa-book-open"></span>
-                chat
+                <%= link_to  chats_path, class: 'hbtn' do %>
+                <span class="fas fa-book-open">chat</span>
+
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-light btn-lg' do %>
-                <span class="fas fa-sign-out-alt"></span>
-                 Log out
+                <%= link_to destroy_user_session_path, method: :delete, class: 'hbtn' do %>
+                <span class="fas fa-sign-out-alt">Log out</span>
+
                 <% end %>
               </li>
               <li class="nav-item">
@@ -67,33 +66,29 @@
 
             <% else %>
               <li class="nav-item">
-                <%= link_to root_path, class: 'btn btn-light btn-lg' do %>
-                <span class="fas fa-home"></span>
-                 Home
+                <%= link_to root_path, class: 'hbtn' do %>
+                <span class="fas fa-home">Home</span>
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to about_path, class: 'btn btn-light btn-lg' do %>
-                <span class="fas fa-link"></span>
-                 About
+                <%= link_to about_path, class: 'hbtn' do %>
+                <span class="fas fa-link">About</span>
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to events_path, class: 'btn btn-light btn-lg' do %>
-                <span class="fas fa-events"></span>
-                 Event
+                <%= link_to events_path, class: 'hbtn' do %>
+                <span class="fas fa-events"> Event</span>
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to new_user_registration_path, class: 'btn btn-light btn-lg' do %>
-                <span class="fas fa-user-plus"></span>
-                 Sign up
+                <%= link_to new_user_registration_path, class: 'hbtn' do %>
+                <span class="fas fa-user-plus">Sign up</span>
+
                 <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to user_session_path, class: 'btn btn-light btn-lg'  do %>
-                <span class="fas fa-sign-in-alt"></span>
-                 Log in
+                <%= link_to user_session_path, class: 'hbtn'  do %>
+                <span class="fas fa-sign-in-alt"> Log in</span>
                 <% end %>
               </li>
             <% end %>
@@ -109,7 +104,7 @@
 
   <div class="body">
       <%= yield %>
-      
+
      <footer>
        <p class="text-center"> Suzuki Kazuya</p>
      </footer>

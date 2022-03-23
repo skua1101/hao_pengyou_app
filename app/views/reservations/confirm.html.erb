@@ -47,9 +47,10 @@
          <td style="padding: 15px 10px;"><%= @event.entry_fee %> （<%= @event.entry_fee_detail %>）</td>
        </tr>
       </table>
-    </div>
-
-      <div style="margin: 10px 30px; 30px">
-          <%= link_to"予約完了",reservations_path(event_id: @event.id), method: :post, class: "btn btn-success" %>
-      </div>
+   　<%= link_to reservations_path(event_id: @event.id), method: :post do %>
+       　<div class="btn" style = "margin-bottom: 50px;">
+        　<span>予約完了</span>
+         </div>
+      <% end %>
 </div>
+

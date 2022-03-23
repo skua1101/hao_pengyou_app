@@ -66,9 +66,20 @@
     </tr>
     <tr>
       <% if @user == current_user %>
-        <th colspan="2">
-         <%= link_to"編集する",edit_user_path(@user),class: "btn btn-primary" %>
-        </th>
+        <td>
+           <%= link_to edit_user_path(@user) do %>
+              <div class="ebtn" style = "margin-bottom: 0px 50px;">
+                <span> Edit User</span>
+              </div>
+            <% end %>
+         </td>
+         <td>
+           <%= link_to new_event_path do %>
+              <div class="ubtn" style = "margin-bottom: 0px 50px;">
+                <span>＋New Event</span>
+              </div>
+            <% end %>
+         </td>
       <% else %>
         <tr>
           <td style="border:none;">
@@ -93,11 +104,6 @@
 　　　<!--会員の作成イベント一覧-->
 　　　<div style="display: flex;">
 　　　   <div style="margin: 5px 0px; font-weight:bold; color: #ffffff;"><h3>Events</h3></div>
-　　　   <div style="margin: 0px;font-weight:bold;">
-　　　     <% if @user == current_user %>
-　　　      <%= link_to"＋New Event",new_event_path,class: "btn btn-success" %>
-　　　     <% end %>
-　　　   </div>
       </div>
       <table class="table-bordered" style="boder-width: thick; background-color: #ffffff; margin: 0px 50px;">
        <tr style="background-color: #550000; color: white;">
