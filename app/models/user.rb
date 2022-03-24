@@ -24,6 +24,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, format:{ with:  /\A[一-龥]+\z/}
   validates :last_name_kana, presence: true,format:{ with:  /\A[ァ-ヶー－]+\z/}
   validates :first_name_kana, presence: true,format:{ with:  /\A[ァ-ヶー－]+\z/}
+  validates :nationality, presence: true, format:{ with:  /\A[一-龥]+\z/}
   validates :post_code, presence: true, format:{ with:  /\A\d{7}\z/}
   validates :address, presence:true
   validates :phone_number, presence: true,format:{ with:  /\A\d{10,11}\z/}

@@ -69,7 +69,7 @@
         <td>
            <%= link_to edit_user_path(@user) do %>
               <div class="ebtn" style = "margin-bottom: 0px 50px;">
-                <span> Edit User</span>
+                <span>Edit User</span>
               </div>
             <% end %>
          </td>
@@ -168,7 +168,7 @@
        </tr>
        <% end %>
       </table>
-      <div class="col-md-12 text-right" style="margin:0px 50px;">
+      <div class="pagenation"style="margin:0px 50px;">
          <%= paginate @user_reservations %>
       </div>
       <%end%>

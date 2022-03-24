@@ -56,13 +56,11 @@
   // transition: 0.5s;
 }
 
-/* ボタン左上のカッコがホバーで伸びる */
 .hbtn :hover::before {
   width: 100%;
   height: 100%;
 }
 
-/* ボタン右下のカッコがホバーで伸びる */
 .hbtn span:hover::after {
   width: 100%;
   height: 100%;
