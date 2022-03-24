@@ -48,7 +48,7 @@
        </tr>
        <tr>
          <th  style="padding: 15px 10px; background-color: #eeeeee;">キャンセルする</th>
-         <td><%= link_to"予約キャンセル",reservation_path(@reservation), method: :delete, class: "btn btn-success" %></td>
+         <td><%= link_to"予約キャンセル",reservation_path(@reservation), method: :delete, data: {confirm:"キャンセルしますか？"},class: "btn btn-success" %></td>
        </tr>
       </table>
     </div>
