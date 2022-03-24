@@ -1,0 +1,28 @@
+<div class= "calendar-container">
+ <div class='col-md-12'>
+  <section class="main-visual mt-4">
+    <div class="mv-text">
+      <h1 class=text-center style="margin-bottom: 50px; color: #000;"> Calendar <i></i></h1>
+    </div>
+  </section>
+ </div>
+
+ <div class="d-flex">
+   <div class="col-md-3 col-sm-12 col-xs-12">
+     <%= render 'new'%>
+   </div>
+
+
+   <div class="col-md-9 col-sm-12 col-xs-12">
+    <%= month_calendar events: @calendars do |date, calendars| %>
+     <%= date.day %>
+     <% calendars.each do |calendar| %>
+      <div>
+        <%= calendar.calendar_title %>
+        <%= calendar.start_time.strftime("%H:%M〜") %>
+      </div>
+     <% end %>
+    <% end %>
+   </div>
+ </div>
+</div>

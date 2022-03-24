@@ -61,6 +61,7 @@ gem "enum_help"
 gem 'rails-i18n'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'simple_calendar', '~> 2.0'
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

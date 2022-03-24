@@ -28,5 +28,7 @@ Rails.application.routes.draw do
   resources :chats, only: [:index, :create, :destroy]
 
   resources :notifications, only: :index
+
+  resources :calendars
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
