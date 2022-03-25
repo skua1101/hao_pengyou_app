@@ -9,7 +9,7 @@
     </div>
 
    <div class='col-md-12'>
-    <table border="1" style="margin:10px; background-color: white;">
+    <table border="1" align="center" style="background-color: white;">
        <tr>
          <th style="padding: 15px 10px; background-color: #eeeeee;">名前</th>
          <td style="padding: 15px 10px;"><%= @user.last_name %> <%=@user.first_name%></td>
@@ -47,10 +47,12 @@
          <td style="padding: 15px 10px;"><%= @event.entry_fee %> （<%= @event.entry_fee_detail %>）</td>
        </tr>
       </table>
-   　<%= link_to reservations_path(event_id: @event.id), method: :post do %>
-       　<div class="btn" style = "margin-bottom: 50px;">
+      <div align="center">
+   　  <%= link_to reservations_path(event_id: @event.id), method: :post do %>
+       　<div class="btn" style = "margin: 50px;">
         　<span>予約完了</span>
          </div>
       <% end %>
+      </div>
 </div>
 

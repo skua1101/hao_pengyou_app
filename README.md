@@ -16,7 +16,12 @@
 学習のインプットだけでなくアウトプットする場が欲しいや海外の方の価値観に触れたいときなど。
 
 ## 設計書
-作成中
+WBS: https://docs.google.com/spreadsheets/d/14K25Z5ntKjiVSPGcw_1SbHlWRz6FtcFV80VGKrTylUY/edit?usp=sharing
+画面遷移図：  https://drive.google.com/file/d/1pxM5FjJtCo6kIwISqhBWAS05-_Lso_wg/view?usp=sharing
+テーブル定義書: https://docs.google.com/spreadsheets/d/1zn06hiPGkbroNj10agfuHkkv1y1s8I-7TJETT4w9ZXo/edit?usp=sharing
+ワイヤーフレーム: https://www.icloud.com/keynote/01dk_AUZNNQCRp7nLvsbgmVQA
+ER図: https://drive.google.com/file/d/17CPPbwZvcaVn3N_KdG1TTgX1bbH1pttq/view?usp=sharing
+アプリケーション詳細設計: https://docs.google.com/spreadsheets/d/1WTuh7nIkF90SeJSMq3uJZy1Wsqz2271N/edit?usp=sharing&ouid=104529517133759371910&rtpof=true&sd=true
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1EqCzlaC_EZ4WQHGy9iX7TQH4RndlUfRQJlYrJZFGa1w/edit?usp=sharing

@@ -3,10 +3,45 @@
     <div class='col-md-12'>
       <section class="main-visual mt-4">
         <div class="mv-text">
-          <h1 class=text-center style="color: white;"> User Info <i></i></h1>
+          <h1 class=text-center style="color: white;"> User Page <i></i></h1>
         </div>
       </section>
     </div>
+
+<% if @user == current_user %>
+ <div class='col-md-12'>
+  <div class=table_user style="text-align: center;">
+    <table  align="center">
+      <tr>
+        <td>
+           <%= link_to edit_user_path(@user) do %>
+              <div class="hbtn" style = "margin-bottom: 0px 50px;">
+                <span>Edit User</span>
+              </div>
+            <% end %>
+         </td>
+         <td>
+           <%= link_to new_event_path do %>
+              <div class="hbtn" style = "margin-bottom: 0px 50px;">
+                <span>＋New Event</span>
+              </div>
+           <% end %>
+          </td>
+          <td>
+           <%= link_to calendars_path do %>
+              <div class="hbtn" style = "margin-bottom: 0px 50px;">
+                <span>My Calendar</span>
+              </div>
+           <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+<% end %>
+
+
+
 
       <table><tr><td>
 
@@ -65,22 +100,7 @@
       </tr>
     </tr>
     <tr>
-      <% if @user == current_user %>
-        <td>
-           <%= link_to edit_user_path(@user) do %>
-              <div class="ebtn" style = "margin-bottom: 0px 50px;">
-                <span> Edit User</span>
-              </div>
-            <% end %>
-         </td>
-         <td>
-           <%= link_to new_event_path do %>
-              <div class="ubtn" style = "margin-bottom: 0px 50px;">
-                <span>＋New Event</span>
-              </div>
-            <% end %>
-         </td>
-      <% else %>
+      <% if @user != current_user %>
         <tr>
           <td style="border:none;">
           <% if @user.followed_by?(current_user) %>
@@ -168,12 +188,11 @@
        </tr>
        <% end %>
       </table>
-      <div class="col-md-12 text-right" style="margin:0px 50px;">
+      <div class="pagenation"style="margin:0px 50px;">
          <%= paginate @user_reservations %>
       </div>
       <%end%>
 
       </td></tr></table>
-
 
     </div>
