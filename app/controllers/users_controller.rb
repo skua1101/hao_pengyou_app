@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      flash[:notice] = "#{@customer.last_name}さんの情報を編集しました。"
+      flash[:notice] = "#{@user.last_name}さんの情報を編集しました。"
       redirect_to user_path(current_user)
     else
       render :edit
