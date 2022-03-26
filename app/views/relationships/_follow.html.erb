@@ -1,0 +1,5 @@
+<% if @user.followed_by?(current_user) %>
+    <%= link_to "Follow外す", user_relationships_path(@user), method: :delete, local: false %>
+<% else %>
+    <%= link_to "Followする", user_relationships_path(@user), method: :post, local: false %>
+<% end %>
