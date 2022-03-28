@@ -1,7 +1,8 @@
 class CalendarsController < ApplicationController
   def index
      @calendar = Calendar.new
-     @calendars = Calendar.all
+     @user = current_user
+     @calendars = Calendar.where(user_id: current_user).order(start_time: "desc").kaminari_page(params[:page]).per(8)
   end
 
   def new
@@ -9,9 +10,14 @@ class CalendarsController < ApplicationController
   end
 
   def create
-    Calendar.create(calendar_params)
-    flash[:notice] = "予定を記録しました"
-    redirect_to calendars_path
+    calendar = Calendar.new(calendar_params)
+   if  calendar.user_id = current_user.id
+   	calendar.save
+       flash[:notice] = "予定を記録しました"
+ 	    redirect_to calendars_path
+   else
+     render :index
+   end
   end
 
   def edit
@@ -37,6 +43,6 @@ class CalendarsController < ApplicationController
   private
 
   def calendar_params
-    params.require(:calendar).permit(:calendar_title, :calendar_content, :start_time)
+    params.require(:calendar).permit(:user_id, :calendar_title, :calendar_content, :start_time)
   end
 end
