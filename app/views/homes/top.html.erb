@@ -3,11 +3,7 @@
     <div class='col-md-12'>
       <section class="main-visual mt-4">
         <div class="mv-text">
-          <h1 class=text-center style="color: white;"> Welcome to HaoPengYou <i></i></h1>
-           <h6 class=text-center style="color: white;">
-            興味のあるイベントをクリックしてイベントに参加しよう！！<br />
-            ※開催日時・開催場所をご確認のうえご予約をお願い致します
-           </h6>
+          <h1 class=text-center style="color: #000;"> 一緒に学べる仲間を探してみませんか？<i></i></h1>
         </div>
       </section>
     </div>
@@ -15,24 +11,35 @@
 
   <!--新着イベント-->
   <div class="row mt-4">
-    <section class="new-items col-md-12" style= "padding: 50px 80px 30px">
-      <h3 style="color: white;"><strong>New Event</strong></h3>
+    <section class="new-items col-md-12" style= "padding: 30px 80px 0px">
+       <h1 class=text-center style="color: #000;">New Event</h1>
+       <h6 class=text-center style="color: #000;">
+            興味のあるイベントをクリックしてイベントに参加しましょう<br />
+            ※開催日時・開催場所をご確認のうえご予約をお願い致します
+       </h6>
       <div class="row">
         <% @events.each do |event| %>
           <div class="col-3">
-            <div class="card border border-2" style = "padding: 10px; margin: 10px;">
+            <div class="card border border-2" style = "padding: 0px; margin: 20px;">
                 <%= image_tag event.image.variant(resize_to_fill: [450, 250])%>
-              <div class="card-body">
-                <h6 class="card-title"><strong><%= link_to event.event_name, event_path(event) %></strong></h6>
-                <p class="card-text">開催日：<%= event.event_date.strftime('%Y/%m/%d %H:%M~') %></p>
-              </div>
+              <!--<div class="card-body">-->
+               <a href="/events/<%= event.id %>" class="card-body text-dark">
+                <h6 class="card-title"><strong><%= event.event_name %></strong></h6>
+                <p class="card-text"><%= event.event_date.strftime('%Y/%m/%d %H:%M~') %></p>
+                <p class="card-text"><%= event.event_status_i18n %></p>
+              <!--</div>-->
+              </a>
             </div>
           </div>
         <% end %>
       </div>
     </section>
   </div>
-  <div class="col-md-12 text-right" style="padding-bottom: 40px;">
-    <%= link_to "全てのイベントを見る>", events_path %>
-  </div>
+   <div align="center">
+   　  <%= link_to events_path do %>
+       　<div class="tbtn">
+       　  <span>All Event</span>
+         </div>
+      <% end %>
+   </div>
 </div>
