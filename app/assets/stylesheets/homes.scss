@@ -65,3 +65,72 @@
   width: 100%;
   height: 100%;
 }
+
+
+.card:hover {
+    transform: scale(1.1);
+  }
+
+.tbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // min-height: 100vh;
+  // background: #000;
+}
+
+.tbtn span {
+  position: relative;
+  margin: 5px;
+  padding: 10px 30px;
+  color: #000;
+  text-decoration: none;
+  font-size: 20px;
+  letter-spacing: 3px;
+  overflow: hidden;
+  // transition: 0s;
+  // -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+
+.tbtn span:hover {
+  background: #000;
+  color: #fff;
+  // box-shadow: 0 0 50px #DD0000;
+  // transition-delay: 0.5s;
+}
+
+/* ボタン左上のカッコ */
+.tbtn span::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  content: "";
+  // transition: 0.5s;
+}
+
+// * ボタン右下のカッコ */
+.tbtn span::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  content: "";
+  // transition: 0.5s;
+}
+
+.tbtn :hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.tbtn span:hover::after {
+  width: 100%;
+  height: 100%;
+}

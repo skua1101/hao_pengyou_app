@@ -1,26 +1,32 @@
 <div class="event-container">
-<div class='col-md-12'>
-  <section class="main-visual mt-4">
-    <div class="mv-text">
-      <h1 class=text-center style="color: white;"> All Event <i></i></h1>
-    </div>
-  </section>
-</div>
-      <div class="row">
-        <% @events.each do |event| %>
-          <div class="col-3">
-            <div class="card border border-2" style = "padding: 10px; margin: 20px;">
-                <%= image_tag event.image.variant(resize_to_fill: [450, 250])%>
-              <div class="card-body">
-                <h6 class="card-title"><strong><%= link_to event.event_name, event_path(event) %></strong></h6>
-                <p class="card-text"><%= event.event_date.strftime('%Y/%m/%d %H:%M~') %></p>
-                <p class="card-text"><%= event.event_status_i18n %></p>
-              </div>
-            </div>
-          </div>
-        <% end %>
-        <%= paginate @events %>
+  <div class='col-md-12'>
+    <section class="main-visual mt-4">
+      <div class="mv-text">
+        <h1 class=text-center style="color: white;"> All Event <i></i></h1>
       </div>
     </section>
+  </div>
+
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-3">
+        <div class="card border border-2" style = "padding: 0px; margin: 20px;">
+            <%= image_tag event.image.variant(resize_to_fill: [450, 250])%>
+            <div class="tag-box">
+              <% event.tags.each do |tag| %>
+                 <span class="label"><%= tag.name %></span>
+              <% end %>
+            </div>
+              <!--<div class="card-body">-->
+              <a href="/events/<%= event.id %>" class="card-body text-dark">
+                <h6 class="card-title"><strong><%= event.event_name %></strong></h6>
+                <p class="card-text"><%= event.event_date.strftime('%Y/%m/%d %H:%M~') %></p>
+                <p class="card-text"><%= event.event_status_i18n %></p>
+              <!--</div>-->
+              </a>
+        </div>
+      </div>
+    <% end %>
+    <%= paginate @events %>
   </div>
 </div>

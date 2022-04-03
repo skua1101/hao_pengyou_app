@@ -10,6 +10,7 @@ module HaoPengyou
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.paths.add 'lib', eager_load: true # API実装に伴い追加
 
     # Configuration for the application, engines, and railties goes here.
     #

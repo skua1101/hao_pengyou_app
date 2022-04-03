@@ -1,149 +1,160 @@
 <div class="user-container">
   <div class="row">
     <div class='col-md-12'>
-      <section class="main-visual mt-4">
-        <div class="mv-text">
-          <h1 class=text-center style="color: white;"> User Page <i></i></h1>
-        </div>
-      </section>
-    </div>
 
-<% if @user == current_user %>
- <div class='col-md-12'>
-  <div class=table_user style="text-align: center;">
-    <table  align="center">
-      <tr>
-        <td>
-           <%= link_to edit_user_path(@user) do %>
-              <div class="hbtn" style = "margin-bottom: 0px 50px;">
-                <span>Edit User</span>
+          <% if @user == current_user %>
+              <div class='col-md-12'>
+                   <div class=table_user style="text-align: center;">
+                      <table  align="center" >
+                        <tr>
+                            <td>
+                              <%= link_to edit_user_path(@user) do %>
+                                  <div class="hbtn" style = "margin-bottom: 0px 50px;">
+                                      <span>Edit User</span>
+                                  </div>
+                              <% end %>
+                            </td>
+                            <td>
+                              <%= link_to new_event_path do %>
+                                  <div class="hbtn" style = "margin-bottom: 0px 50px;">
+                                      <span>＋New Event</span>
+                                  </div>
+                              <% end %>
+                            </td>
+                            <td>
+                              <%= link_to calendars_path do %>
+                                  <div class="hbtn" style = "margin-bottom: 0px 50px;">
+                                     <span>My Calendar</span>
+                                  </div>
+                              <% end %>
+                            </td>
+                        </tr>
+                      </table>
+                    </div>
               </div>
-            <% end %>
-         </td>
-         <td>
-           <%= link_to new_event_path do %>
-              <div class="hbtn" style = "margin-bottom: 0px 50px;">
-                <span>＋New Event</span>
-              </div>
-           <% end %>
-          </td>
-          <td>
-           <%= link_to calendars_path do %>
-              <div class="hbtn" style = "margin-bottom: 0px 50px;">
-                <span>My Calendar</span>
-              </div>
-           <% end %>
-          </td>
-        </tr>
-      </table>
-    </div>
-  </div>
-<% end %>
+          <% end %>
+
+          <div class='col-md-12'>
+              <% if @user == current_user %>
+                  <h1 class=text-center style="color: white;"> My Page <i></i></h1>
+              <% else %>
+                  <h1 class=text-center style="color: white;"> User Page <i></i></h1>
+              <% end %>
+          </div>
 
 
 
 
-      <table><tr><td>
+
+
+      <div class="col-md-12 col-sm-12 col-xs-12">
 
       <!--会員情報-->
-      <div style="margin: 5px 50px; font-weight:bold; color: #ffffff;"><h3>User Info</h3></div>
-      <table class="table-bordered" style="boder-width: thick; background-color: #ffffff; margin: 0px 50px;">
-       <tr>
-         <th style="padding: 15px 10px; background-color: #550000; color: white;">氏名</th>
-         <td style="padding: 15px 10px;"><%= @user.last_name %> <%=@user.first_name%></td>
-       </tr>
-       <tr>
-         <th style="padding: 15px 10px; background-color: #550000; color: white;">カナ</th>
-         <td style="padding: 15px 10px;"><%= @user.last_name_kana %> <%=@user.first_name_kana%></td>
-       </tr>
-       <tr>
-         <th style="padding: 15px 10px; background-color: #550000; color: white;">国籍</th>
-         <td style="padding: 15px 10px;"><%= @user.nationality %></td>
-       </tr>
-        <% if @user == current_user %>
-       <tr>
-         <th style="padding: 15px 10px;background-color: #550000; color: white;">郵便番号</th>
-         <td style="padding: 15px 10px;"><%= @user.post_code %></td>
-       </tr>
-       <tr>
-         <th style="padding: 15px 10px; background-color: #550000; color: white;">住所</th>
-         <td style="padding: 15px 10px;"><%= @user.address %></td>
-       </tr>
-       <tr>
-         <th style="padding: 15px 10px; background-color: #550000; color: white;">電話番号</th>
-         <td style="padding: 15px 10px;"><%= @user.phone_number %></td>
-       </tr>
-       <tr>
-         <th style="padding: 15px 10px; background-color: #550000; color: white;">メールアドレス</th>
-         <td style="padding: 15px 10px;"><%= @user.email %></td>
-       </tr>
-       <%end%>
+        <div style="margin: 5px; font-weight:bold; color: #ffffff;"><h3>User Info</h3></div>
+            <table class="table-bordered" style="boder-width: thick; background-color: #ffffff; margin: 0px;">
+                <tr>
+                    <th style="padding: 15px 10px; background-color: #550000; color: white;">氏名</th>
+                    <td style="padding: 15px 10px;"><%= @user.last_name %> <%=@user.first_name%></td>
+                </tr>
 
-      </table>
+                <tr>
+                    <th style="padding: 15px 10px; background-color: #550000; color: white;">カナ</th>
+                    <td style="padding: 15px 10px;"><%= @user.last_name_kana %> <%=@user.first_name_kana%></td>
+                </tr>
 
-<!--フォロー機能-->
-      <table class="table_news" style="boder-width: thick; margin: 0px 50px;">
-        <tr>
-      <th style= "font-weight:bold; color: #ffffff;">follows</th>
-      <td>
-        <%= link_to followed_user_path(@user) do %>
-          <%= @user.active_relationships.count %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <th style= "font-weight:bold; color: #ffffff;">followers</th>
-      <td>
-        <%= link_to follower_user_path(@user) do %>
-          <%= @user.passive_relationships.count %></td>
-        <% end %>
-      </tr>
-    </tr>
-    <tr>
-      <% if @user != current_user %>
-        <tr>
-          <td style="border:none;">
-          <% if @user.followed_by?(current_user) %>
-            <%= link_to "Follow外す", user_relationships_path(@user), method: :delete, class: "btn btn-primary" %>
-          <% else %>
-              <%= link_to "Followする", user_relationships_path(@user), method: :post, class: "btn btn-success" %>
-          <% end %></td>
+                <tr>
+                    <th style="padding: 15px 10px; background-color: #550000; color: white;">国籍</th>
+                    <td style="padding: 15px 10px;"><%= @user.nationality %></td>
+                </tr>
 
-          <td style="border:none;">
-           <% if current_user != @user %>
-              <%= link_to 'Chatを送る', chat_path(@user.id), class: "btn btn-primary"%>
-            <% end %></td>
-        </tr>
-      <% end %>
-      </table>
+              <% if @user == current_user %>
+                <tr>
+                    <th style="padding: 15px 10px;background-color: #550000; color: white;">郵便番号</th>
+                    <td style="padding: 15px 10px;"><%= @user.post_code %></td>
+                </tr>
 
-      </td>
+                <tr>
+                    <th style="padding: 15px 10px; background-color: #550000; color: white;">住所</th>
+                    <td style="padding: 15px 10px;"><%= @user.address %></td>
+                </tr>
 
-      <td>
+                <tr>
+                    <th style="padding: 15px 10px; background-color: #550000; color: white;">電話番号</th>
+                    <td style="padding: 15px 10px;"><%= @user.phone_number %></td>
+                </tr>
 
-　　　<!--会員の作成イベント一覧-->
-　　　<div style="display: flex;">
-　　　   <div style="margin: 5px 0px; font-weight:bold; color: #ffffff;"><h3>Events</h3></div>
+                <tr>
+                    <th style="padding: 15px 10px; background-color: #550000; color: white;">メールアドレス</th>
+                    <td style="padding: 15px 10px;"><%= @user.email %></td>
+                </tr>
+              <%end%>
+            </table>
+
+
+
+      <!--フォロー機能-->
+            <table class="table_news" style="boder-width: thick; margin: 0px 50px;">
+                <tr>
+                    <th style= "font-weight:bold; color: #ffffff;">follows</th>
+                    <td>
+                        <%= link_to followed_user_path(@user) do %>
+                          <%= @user.active_relationships.count %>
+                        <% end %>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th style= "font-weight:bold; color: #ffffff;">followers</th>
+                    <td>
+                        <%= link_to follower_user_path(@user) do %>
+                          <%= @user.passive_relationships.count %></td>
+                        <% end %>
+                </tr>
+
+              <% if @user != current_user %>
+                <tr>
+                    <td style="border:none;">
+                        <% if @user.followed_by?(current_user) %>
+                          <%= link_to "Follow外す", user_relationships_path(@user), method: :delete, class: "btn btn-primary" %>
+                        <% else %>
+                          <%= link_to "Followする", user_relationships_path(@user), method: :post, class: "btn btn-success" %>
+                        <% end %>
+                    </td>
+
+                    <td style="border:none;">
+                        <% if current_user != @user %>
+                          <%= link_to 'Chatを送る', chat_path(@user.id), class: "btn btn-primary"%>
+                        <% end %>
+                    </td>
+                </tr>
+              <% end %>
+            </table>
       </div>
-      <table class="table-bordered" style="boder-width: thick; background-color: #ffffff; margin: 0px 50px;">
-       <tr style="background-color: #550000; color: white;">
-         <th style="padding: 10px 20px;">作成日</th>
-         <th style="padding: 10px 20px;">イベント名</th>
-         <th style="padding: 10px 20px;">予約数</th>
-         <th style="padding: 10px 20px;">ステータス</th>
-         <th style="padding: 10px 20px;"></th>
-       </tr>
-       <% @user_events.each do |event| %>
-       <tr>
-         <td class= "event_data"><%= event.created_at.strftime('%Y/%m/%d') %></td>
-         <td class= "event_data"><%= event.event_name %></td>
-         <td class= "event_data">
-           <% if @user == current_user %>
-                <%= link_to event.reservations.count, reservations_path(id: event.id) %></td>
-           <% else %>
-                <%= event.reservations.count %>
-           <% end %>
-         <td>
+
+     <div class="row justify-content-center">
+      <div class="card-deck">
+        <% @user_events.each do |event| %>
+          <div class="col-12 col-md-3 col-lg-3 text-card-container">
+            <div class="card border border-2" style = "padding: 0px; margin: 20px;">
+                <%= image_tag event.image.variant(resize_to_fill: [450, 250])%>
+            <div class="tag-box">
+              <% event.tags.each do |tag| %>
+                 <span class="label"><%= tag.name %></span>
+              <% end %>
+            </div>
+              <!--<div class="card-body">-->
+               <a href="/events/<%= event.id %>" class="card-body text-dark">
+                <h6 class="card-title"><strong><%= event.event_name %></strong></h6>
+                <p class="card-text"><%= event.event_date.strftime('%Y/%m/%d %H:%M~') %></p>
+                <p class="card-text"><%= event.event_status_i18n %></p>
+                <p>
+                    <% if @user == current_user %>
+                      <%= link_to event.reservations.count, reservations_path(id: event.id) %>
+                    <% else %>
+                      <%= event.reservations.count %>
+                    <% end %>
+                </p>
+                <p>
            <% if @user == current_user %>
               <%= form_with model: @event, url: event_path(event.id), method: :put,local:true do |f| %>
                 <%= f.select :event_status, options_for_select(Event.event_statuses_i18n.keys.map {|k| [I18n.t("enums.event.event_status.#{k}"), k]}, selected: event.event_status) %>
@@ -152,47 +163,110 @@
            <% else %>
               <%= event.event_status_i18n %>
            <% end %>
-         </td>
-         <td style = "padding: 5px 20px;">
-          <% if @user == current_user %>
-           <%= link_to"詳細へ",event_path(event),class: "btn btn-primary" %>
-          <% else %>
-           <%= link_to"予約",event_path(event),class: "btn btn-primary" %>
-          <% end %>
-         </td>
-       </tr>
-       <% end %>
-      </table>
-      <div class="col-md-12 text-right" style="margin: 0px 50px;">
+         </p>
+              <!--</div>-->
+              </a>
+            </div>
+          </div>
+        <% end %>
+        <div class="col-md-12 text-right" style="margin: 0px;">
          <%= paginate @user_events %>
       </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="card-deck">
+      <% @user_reservations.each do |reservation| %>
+          <div class="col-12 col-md-3 col-lg-3 text-card-container">
+            <div class="card border border-2" style = "padding: 0px; margin: 20px;">
+                <%= image_tag reservation.event.image.variant(resize_to_fill: [450, 250])%>
+              <!--<div class="card-body">-->
+               <a href="/reservations/<%= reservation.id %>" class="card-body text-dark">
+                <h6 class="card-title"><strong><%= reservation.event.event_name %></strong></h6>
+                <p class="card-text"><%= reservation.event.event_date.strftime('%Y/%m/%d %H:%M~') %></p>
+                <p class="card-text"><%= reservation.event.event_status_i18n %></p>
+              <!--</div>-->
+              </a>
+            </div>
+          </div>
+        <% end %>
+        <div class="col-md-12 text-right" style="margin: 0px;">
+         <%= paginate @user_reservations %>
+      </div>
+    </div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+
+   <!--<div class="col-md-8 col-sm-12 col-xs-12">-->
+　　　<!--会員の作成イベント一覧-->
+　　　<!--<div style="display: flex;">-->
+　　　   <!--<div style="margin: 5px 0px; font-weight:bold; color: #ffffff;"><h3>Events</h3></div>-->
+      <!--</div>-->
+      <!--<table style="boder-width: thick; background-color: #ffffff; margin: 0px;">-->
+       <!--<tr style="background-color: #fff; color: #000; border-top-style: solid; border-bottom-style: solid;">-->
+         <!--<th style="padding: 10px 20px;">作成日</th>-->
+         <!--<th style="padding: 10px 20px;">イベント名</th>-->
+         <!--<th style="padding: 10px 20px;">予約数</th>-->
+         <!--<th style="padding: 10px 20px;">ステータス</th>-->
+       <!--</tr>-->
+       <!--<% @user_events.each do |event| %>-->
+       <!--<tr>-->
+         <!--<td class= "event_data"><%= event.created_at.strftime('%Y/%m/%d') %></td>-->
+         <!--<td class= "event_data"><%= link_to event.event_name, event_path(event)%></td>-->
+         <!--<td class= "event_data">-->
+           <!--<% if @user == current_user %>-->
+                <!--<%= link_to event.reservations.count, reservations_path(id: event.id) %>-->
+           <!--<% else %>-->
+                <!--<%= event.reservations.count %>-->
+           <!--<% end %>-->
+
+         <!--</td>-->
+         <!--<td>-->
+           <!--<% if @user == current_user %>-->
+              <!--<%= form_with model: @event, url: event_path(event.id), method: :put,local:true do |f| %>-->
+                <!--<%= f.select :event_status, options_for_select(Event.event_statuses_i18n.keys.map {|k| [I18n.t("enums.event.event_status.#{k}"), k]}, selected: event.event_status) %>-->
+                <!--<%= f.submit '更新', class: 'btn btn-success ml-5' %>-->
+              <!--<% end %>-->
+           <!--<% else %>-->
+              <!--<%= event.event_status_i18n %>-->
+           <!--<% end %>-->
+         <!--</td>-->
+       <!--</tr>-->
+       <!--<% end %>-->
+      <!--</table>-->
+      <!--<div class="col-md-12 text-right" style="margin: 0px;">-->
+         <!--<%= paginate @user_events %>-->
+      <!--</div>-->
 
 
       <!--会員の予約一覧-->
-      <% if @user == current_user %>
-      <div style="margin: 5px 50px; font-weight:bold; color: #ffffff;"><h3>Reservations</h3></div>
-      <table class="table-bordered" style="boder-width: thick; background-color: #ffffff; margin: 0px 50px 0px 50px;">
-       <tr style="background-color: #550000; color: white;">
-         <th style="padding: 10px 20px;">予約確定日</th>
-         <th style="padding: 10px 20px;">開催日</th>
-         <th style="padding: 10px 20px;">イベント名</th>
-         <th style="padding: 10px 20px;">内容</th>
-       </tr>
+      <!--<% if @user == current_user %>-->
+      <!--<div style="margin: 5px 50px; font-weight:bold; color: #ffffff;"><h3>Reservations</h3></div>-->
+      <!--<table class="table-bordered" style="boder-width: thick; background-color: #ffffff; margin: 0px 50px 0px 50px;">-->
+       <!--<tr style="background-color: #550000; color: white;">-->
+         <!--<th style="padding: 10px 20px;">予約確定日</th>-->
+         <!--<th style="padding: 10px 20px;">開催日</th>-->
+         <!--<th style="padding: 10px 20px;">イベント名</th>-->
+         <!--<th style="padding: 10px 20px;">内容</th>-->
+       <!--</tr>-->
 
-       <% @user_reservations.each do |reservation| %>
-       <tr>
-         <td class= "event_data"><%= reservation.created_at.strftime('%Y/%m/%d') %></td>
-         <td class= "event_data"><%= reservation.event.event_date.strftime('%Y/%m/%d %H:%M~') %></td>
-         <td class= "event_data"><%= reservation.event.event_name %></td>
-         <td class= "event_data" style = "padding: 5px 20px;"><%= link_to"予約詳細",reservation_path(reservation),class: "btn btn-primary" %></td>
-       </tr>
-       <% end %>
-      </table>
-      <div class="pagenation"style="margin:0px 50px;">
-         <%= paginate @user_reservations %>
-      </div>
-      <%end%>
-
-      </td></tr></table>
-
-    </div>
+       <!--<% @user_reservations.each do |reservation| %>-->
+       <!--<tr>-->
+         <!--<td class= "event_data"><%= reservation.created_at.strftime('%Y/%m/%d') %></td>-->
+         <!--<td class= "event_data"><%= reservation.event.event_date.strftime('%Y/%m/%d %H:%M~') %></td>-->
+         <!--<td class= "event_data"><%= reservation.event.event_name %></td>-->
+         <!--<td class= "event_data" style = "padding: 5px 20px;"><%= link_to"予約詳細",reservation_path(reservation),class: "btn btn-primary" %></td>-->
+       <!--</tr>-->
+       <!--<% end %>-->
+      <!--</table>-->
+      <!--<div class="pagenation"style="margin:0px 50px;">-->
+         <!--<%= paginate @user_reservations %>-->
+      <!--</div>-->
+      <!--<%end%>-->
+    <!--</div>-->
+  <!--</div>-->
