@@ -3,7 +3,8 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :reservations
   has_many :notifications, dependent: :destroy
-  
+  has_many :tags, dependent: :destroy
+
   validates :event_name, presence: true
   validates :content, presence: true
   validates :entry_fee, presence: true

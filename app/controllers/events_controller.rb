@@ -9,9 +9,16 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user_id =current_user.id
-    if@event.save
+    if @event.save
+      # API実装に伴う追加
+      tags = Vision.get_image_data(@event.image)
+      tags.each do |tag|
+        @event.tags.create(name: tag)
+      end
+      # -----------------
       flash[:notice] = "#{@event.event_name}作成しました。"
       redirect_to user_path(current_user)
+
     else
       render :new
     end
