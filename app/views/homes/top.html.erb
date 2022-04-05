@@ -1,26 +1,29 @@
 <div class="main-container">
   <div class="row">
     <div class='col-md-12'>
-      <section class="main-visual mt-4">
-        <div class="mv-text">
-          <h1 class=text-center style="color: #000;"> 一緒に学べる仲間を探してみませんか？<i></i></h1>
-        </div>
-      </section>
+
+       <div class= "header-top">
+         <p>
+           Welcome To HaoPengYou
+         </p>
+         <%= image_tag 'top_haikeis.jpg'%></div>
+       </div>
     </div>
   </div>
+
 
   <!--新着イベント-->
   <div class="row mt-4">
     <section class="new-items col-md-12" style= "padding: 30px 80px 0px">
-       <h1 class=text-center style="color: #000;">New Event</h1>
-       <h6 class=text-center style="color: #000;">
+       <h1 class=text-center style="color: #777777;">New Event</h1>
+       <h6 class=text-center style="color: #777777;">
             興味のあるイベントをクリックしてイベントに参加しましょう<br />
             ※開催日時・開催場所をご確認のうえご予約をお願い致します
        </h6>
       <div class="row">
         <% @events.each do |event| %>
           <div class="col-3">
-            <div class="card border border-2" style = "padding: 0px; margin: 20px;">
+            <div class="card border border-2 border-dark" style = "padding: 0px; margin: 20px;">
                 <%= image_tag event.image.variant(resize_to_fill: [450, 250])%>
             <div class="tag-box">
               <% event.tags.each do |tag| %>

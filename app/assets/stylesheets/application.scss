@@ -20,15 +20,12 @@
   background-size: cover;
 }
 
-.header-top{
-    width: 100%;
-    height: 200px;
-    position: relative;
-}
 .header-top img{
     width: 100%;
-    height: 200px;
+    height: 400px;
 }
+
+
 .header-top p{
     position: absolute;
     top: 50%;
@@ -41,7 +38,7 @@
 }
 
 header {
-  background-color: #000;
+  background-color: #fff;
   background-size: cover;
 }
 
@@ -108,7 +105,9 @@ footer {
 }
 
 .label {
-  background-color: blue;
+  border-radius: 40%;
+  background-color: #ccffff;
   padding: 5px;
-  color:#fff;
+  color:#000;
 }
+

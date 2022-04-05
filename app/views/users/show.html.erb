@@ -43,15 +43,9 @@
           </div>
 
 
-
-
-
-
-      <div class="col-md-12 col-sm-12 col-xs-12">
-
+      <div class='col-md-12'>
       <!--会員情報-->
-        <div style="margin: 5px; font-weight:bold; color: #ffffff;"><h3>User Info</h3></div>
-            <table class="table-bordered" style="boder-width: thick; background-color: #ffffff; margin: 0px;">
+            <table class="table-bordered" align="center" style="boder-width: thick; background-color: #ffffff; margin: 0px;">
                 <tr>
                     <th style="padding: 15px 10px; background-color: #550000; color: white;">氏名</th>
                     <td style="padding: 15px 10px;"><%= @user.last_name %> <%=@user.first_name%></td>
@@ -155,15 +149,15 @@
                     <% end %>
                 </p>
                 <p>
-           <% if @user == current_user %>
-              <%= form_with model: @event, url: event_path(event.id), method: :put,local:true do |f| %>
-                <%= f.select :event_status, options_for_select(Event.event_statuses_i18n.keys.map {|k| [I18n.t("enums.event.event_status.#{k}"), k]}, selected: event.event_status) %>
-                <%= f.submit '更新', class: 'btn btn-success ml-5' %>
-              <% end %>
-           <% else %>
-              <%= event.event_status_i18n %>
-           <% end %>
-         </p>
+                     <% if @user == current_user %>
+                        <%= form_with model: @event, url: event_path(event.id), method: :put,local:true do |f| %>
+                          <%= f.select :event_status, options_for_select(Event.event_statuses_i18n.keys.map {|k| [I18n.t("enums.event.event_status.#{k}"), k]}, selected: event.event_status) %>
+                          <%= f.submit '更新', class: 'btn btn-success ml-5' %>
+                        <% end %>
+                     <% else %>
+                        <%= event.event_status_i18n %>
+                     <% end %>
+                </p>
               <!--</div>-->
               </a>
             </div>
