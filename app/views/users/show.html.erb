@@ -45,65 +45,46 @@
 
       <div class='col-md-12'>
       <!--会員情報-->
-            <table class="table-bordered" align="center" style="boder-width: thick; background-color: #ffffff; margin: 0px;">
-                <tr>
-                    <th style="padding: 15px 10px; background-color: #550000; color: white;">氏名</th>
-                    <td style="padding: 15px 10px;"><%= @user.last_name %> <%=@user.first_name%></td>
-                </tr>
-
-                <tr>
-                    <th style="padding: 15px 10px; background-color: #550000; color: white;">カナ</th>
-                    <td style="padding: 15px 10px;"><%= @user.last_name_kana %> <%=@user.first_name_kana%></td>
-                </tr>
-
-                <tr>
-                    <th style="padding: 15px 10px; background-color: #550000; color: white;">国籍</th>
-                    <td style="padding: 15px 10px;"><%= @user.nationality %></td>
-                </tr>
-
-              <% if @user == current_user %>
-                <tr>
-                    <th style="padding: 15px 10px;background-color: #550000; color: white;">郵便番号</th>
-                    <td style="padding: 15px 10px;"><%= @user.post_code %></td>
-                </tr>
-
-                <tr>
-                    <th style="padding: 15px 10px; background-color: #550000; color: white;">住所</th>
-                    <td style="padding: 15px 10px;"><%= @user.address %></td>
-                </tr>
-
-                <tr>
-                    <th style="padding: 15px 10px; background-color: #550000; color: white;">電話番号</th>
-                    <td style="padding: 15px 10px;"><%= @user.phone_number %></td>
-                </tr>
-
-                <tr>
-                    <th style="padding: 15px 10px; background-color: #550000; color: white;">メールアドレス</th>
-                    <td style="padding: 15px 10px;"><%= @user.email %></td>
-                </tr>
-              <%end%>
-            </table>
+         <div class= "d-flex">
+              <div>
+                <%= image_tag 'LOGO.png', :size =>'200x200'%>
+              </div>
+              <div align= 'left'>
+                   <div style= 'font-size: 50px; margin: 0px;'><%= @user.last_name %> <%=@user.first_name%></div></br>
+                   <div>name：<%= @user.last_name_kana %> <%=@user.first_name_kana%></div></br>
+                   <div>nationality：<%= @user.nationality %></div>
+                   <div>follows
+                        <%= link_to followed_user_path(@user) do %>
+                          <%= @user.active_relationships.count %>
+                        <% end %>
+                        followers
+                        <%= link_to follower_user_path(@user) do %>
+                          <%= @user.passive_relationships.count %></td>
+                        <% end %>
+                    </div>
+              </div>
+         </div>
 
 
 
       <!--フォロー機能-->
-            <table class="table_news" style="boder-width: thick; margin: 0px 50px;">
-                <tr>
-                    <th style= "font-weight:bold; color: #ffffff;">follows</th>
-                    <td>
-                        <%= link_to followed_user_path(@user) do %>
-                          <%= @user.active_relationships.count %>
-                        <% end %>
-                    </td>
-                </tr>
+            <!--<table class="table_news" style="boder-width: thick; margin: 0px 50px;">-->
+                <!--<tr>-->
+                    <!--<th style= "font-weight:bold; color: #ffffff;">follows</th>-->
+                    <!--<td>-->
+                        <!--<%= link_to followed_user_path(@user) do %>-->
+                          <!--<%= @user.active_relationships.count %>-->
+                        <!--<% end %>-->
+                    <!--</td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <th style= "font-weight:bold; color: #ffffff;">followers</th>
-                    <td>
-                        <%= link_to follower_user_path(@user) do %>
-                          <%= @user.passive_relationships.count %></td>
-                        <% end %>
-                </tr>
+                <!--<tr>-->
+                    <!--<th style= "font-weight:bold; color: #ffffff;">followers</th>-->
+                    <!--<td>-->
+                        <!--<%= link_to follower_user_path(@user) do %>-->
+                          <!--<%= @user.passive_relationships.count %></td>-->
+                        <!--<% end %>-->
+                <!--</tr>-->
 
               <% if @user != current_user %>
                 <tr>
@@ -122,8 +103,8 @@
                     </td>
                 </tr>
               <% end %>
-            </table>
-      </div>
+            <!--</table>-->
+      <!--</div>-->
 
      <div class="row justify-content-center">
       <div class="card-deck">
@@ -139,11 +120,10 @@
               <!--<div class="card-body">-->
                <a href="/events/<%= event.id %>" class="card-body text-dark">
                 <h6 class="card-title"><strong><%= event.event_name %></strong></h6>
-                <p class="card-text"><%= event.event_date.strftime('%Y/%m/%d %H:%M~') %></p>
-                <p class="card-text"><%= event.event_status_i18n %></p>
+                <p class="card-text">開催日時：<%= event.event_date.strftime('%Y/%m/%d %H:%M~') %></p>
                 <p>
                     <% if @user == current_user %>
-                      <%= link_to event.reservations.count, reservations_path(id: event.id) %>
+                      予約数：<%= link_to event.reservations.count, reservations_path(id: event.id) %>名
                     <% else %>
                       <%= event.reservations.count %>
                     <% end %>
