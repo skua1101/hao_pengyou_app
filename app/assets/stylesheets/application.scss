@@ -15,7 +15,7 @@
  *= require_self
  */
 .main-container {
-  background-color: #eeeeee;
+  background-color: #fff;
   // background-image: image-url('haikei_hotel.jpg');
   background-size: cover;
 }
@@ -48,23 +48,23 @@ header {
 }
 
 .user-container {
-   background-color: #eeeeee;
+   background-color: #fff;
   // background-image: image-url('haikei_cake.jpg');
   background-size: cover;
 }
 
 .notice-container {
-  background-image: image-url('haikei_heart.jpg');
+  background-color: #fff;
   background-size: cover;
 }
 
 .event-container {
-  // background-image: image-url('haikei_soccer.jpg');
+  background-image: #fff;
   background-size: cover;
 }
 
 .chat-container {
-  background-image: image-url('haikei_garden.jpg');
+  background-image: #fff;
   background-size: cover;
 }
 
@@ -110,4 +110,5 @@ footer {
   padding: 5px;
   color:#000;
 }
+
 

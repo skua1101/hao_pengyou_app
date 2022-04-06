@@ -1,11 +1,11 @@
 <div class="event-container">
   <div class='col-md-12'>
-    <section class="main-visual mt-4">
-      <div class="mv-text">
-        <h1 class=text-center style="color: #777777;"> All Event <i></i></h1>
-      </div>
-    </section>
+    <div class= "header-top">
+         <p>All Event</p>
+         <%= image_tag 'top_haikeis.jpg'%>
+    </div>
   </div>
+  
 
   <div class="row">
     <% @events.each do |event| %>
@@ -22,6 +22,7 @@
                 <h6 class="card-title"><strong><%= event.event_name %></strong></h6>
                 <p class="card-text"><%= event.event_date.strftime('%Y/%m/%d %H:%M~') %></p>
                 <p class="card-text"><%= event.event_status_i18n %></p>
+                 <p class="card-text"><%= image_tag event.user.get_profile_image(50,50) ,class: "rounded-circle" %><%= event.user.last_name %><%= event.user.first_name %></p>
               <!--</div>-->
               </a>
         </div>

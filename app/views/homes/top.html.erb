@@ -1,15 +1,65 @@
 <div class="main-container">
   <div class="row">
     <div class='col-md-12'>
-
        <div class= "header-top">
          <p>
            Welcome To HaoPengYou
          </p>
-         <%= image_tag 'top_haikeis.jpg'%></div>
+         <%= image_tag 'top_haikeis.jpg'%>
        </div>
     </div>
   </div>
+
+  <h1 class=text-center style="color: #777777;">What is HaoPengYou?</h1>
+
+
+  <div class="d-flex" style = "padding-top:30px;">
+         <div class="col-md-6 col-sm-12 col-xs-12" align = "center">
+          <!--<table style ="padding:20px;"><tr><td>-->
+                <h3 class=text-center style="color: #777777;">1.異国の文化に触れ、学べる“場所”を</h3>
+                <h5 class=text-center style="color: #777777;">
+                      言語学習において「会話」とても大切な学習方法のひとつです。</br>
+                      </br>
+                      文字を見ているだけ、音を聞いているだけでは</br>
+                      </br>
+                      「自分はどのくらい上達したんだろう？」</br>
+                      </br>
+                      「もっと早く上達したい！！」</br>
+                      </br>
+                      こんな悩みを持つ事があると思います。インプットだけでなく、</br>
+                      </br>
+                      アウトプットできる場所で自分の成長に繋げてみてはいかがですか？
+                </h5>
+         </div>
+
+         <div class="col-md-6 col-sm-12 col-xs-12" align="center">
+              <%= image_tag '23529471_s.jpg', :size =>'500x300'%>
+         </div>
+      <!--</td></tr></table>-->
+      </div>
+
+      <div class="d-flex" style = "padding-top:30px;">
+         <div class="col-md-6 col-sm-12 col-xs-12" align="center">
+           <%= image_tag '22927499_s.jpg', :size =>'500x300'%>
+         </div>
+         <div class="col-md-6 col-sm-12 col-xs-12" align = "left">
+           <h3 class=text-center style="color: #777777;">２.国を越えた“親友”のような仲間を</h3>
+                <h5 class=text-center style="color: #777777;">
+                    好朋友（ハオポンヨー）とは、「親友」という意味です。</br>
+                    </br>
+                    言語学習の目的だけでなく辛いとき</br>
+                    </br>
+                    悩みを相談できる友達お互いの文化や</br>
+                    </br>
+                    価値観を共有できる友達言語や文化の壁を越えたつながりを</br>
+                    </br>
+                    そして仲間と切磋琢磨し親友のような存在を</br>
+                    </br>
+                    ぜひ「ハオポンヨー」で作ってみてください
+                </h5>
+         </div>
+      <!--</td></tr></table>-->
+      </div>
 
 
   <!--新着イベント-->
@@ -35,6 +85,7 @@
                 <h6 class="card-title"><strong><%= event.event_name %></strong></h6>
                 <p class="card-text"><%= event.event_date.strftime('%Y/%m/%d %H:%M~') %></p>
                 <p class="card-text"><%= event.event_status_i18n %></p>
+                <p class="card-text"><%= image_tag event.user.get_profile_image(50,50) ,class: "rounded-circle" %><%= event.user.last_name %><%= event.user.first_name %></p>
               <!--</div>-->
               </a>
             </div>

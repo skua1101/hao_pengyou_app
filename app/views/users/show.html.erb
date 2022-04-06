@@ -1,8 +1,50 @@
 <div class="user-container">
   <div class="row">
+
     <div class='col-md-12'>
 
-          <% if @user == current_user %>
+       <div class= "header-top">
+         <p>
+           <% if @user == current_user %>
+                  My Page
+              <% else %>
+                  User Page
+              <% end %>
+         </p>
+         <%= image_tag 'top_haikeis.jpg'%>
+       </div>
+    </div>
+
+
+    <div class='col-md-12'>
+
+      <div class='col-md-12'>
+      <!--会員情報-->
+         <div class= "d-flex">
+              <div class= 'profile_image' style= 'padding-right:50px;'>
+                <%= image_tag @user.get_profile_image(150,150) ,class: "rounded-circle" %>
+              </div>
+              <div align= 'left'>
+                   <div style= 'font-size: 50px; margin: 0px;'><%= @user.last_name %> <%=@user.first_name%></div>
+                   <div>name：
+                        <%= @user.last_name_kana %> <%=@user.first_name_kana%>
+                   </div>
+                   <div>nationality：
+                        <%= @user.nationality %>
+                   </div>
+                   <div>follows
+                        <%= link_to followed_user_path(@user) do %>
+                          <%= @user.active_relationships.count %>
+                        <% end %>
+                        followers
+                        <%= link_to follower_user_path(@user) do %>
+                          <%= @user.passive_relationships.count %>
+                        <% end %>
+                    </div>
+              </div>
+         </div>
+
+         <% if @user == current_user %>
               <div class='col-md-12'>
                    <div class=table_user style="text-align: center;">
                       <table  align="center" >
@@ -33,37 +75,6 @@
                     </div>
               </div>
           <% end %>
-
-          <div class='col-md-12'>
-              <% if @user == current_user %>
-                  <h1 class=text-center style="color: white;"> My Page <i></i></h1>
-              <% else %>
-                  <h1 class=text-center style="color: white;"> User Page <i></i></h1>
-              <% end %>
-          </div>
-
-
-      <div class='col-md-12'>
-      <!--会員情報-->
-         <div class= "d-flex">
-              <div>
-                <%= image_tag 'LOGO.png', :size =>'200x200'%>
-              </div>
-              <div align= 'left'>
-                   <div style= 'font-size: 50px; margin: 0px;'><%= @user.last_name %> <%=@user.first_name%></div></br>
-                   <div>name：<%= @user.last_name_kana %> <%=@user.first_name_kana%></div></br>
-                   <div>nationality：<%= @user.nationality %></div>
-                   <div>follows
-                        <%= link_to followed_user_path(@user) do %>
-                          <%= @user.active_relationships.count %>
-                        <% end %>
-                        followers
-                        <%= link_to follower_user_path(@user) do %>
-                          <%= @user.passive_relationships.count %></td>
-                        <% end %>
-                    </div>
-              </div>
-         </div>
 
 
 
@@ -106,8 +117,8 @@
             <!--</table>-->
       <!--</div>-->
 
-     <div class="row justify-content-center">
-      <div class="card-deck">
+    <div class="row">
+      <!--<div class="card-deck">-->
         <% @user_events.each do |event| %>
           <div class="col-12 col-md-3 col-lg-3 text-card-container">
             <div class="card border border-2" style = "padding: 0px; margin: 20px;">
@@ -149,12 +160,17 @@
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <div class="card-deck">
+  <div class="row ">
+    <!--<div class="card-deck">-->
       <% @user_reservations.each do |reservation| %>
           <div class="col-12 col-md-3 col-lg-3 text-card-container">
             <div class="card border border-2" style = "padding: 0px; margin: 20px;">
                 <%= image_tag reservation.event.image.variant(resize_to_fill: [450, 250])%>
+            <div class="tag-box">
+              <% reservation.event.tags.each do |tag| %>
+                 <span class="label"><%= tag.name %></span>
+              <% end %>
+            </div>
               <!--<div class="card-body">-->
                <a href="/reservations/<%= reservation.id %>" class="card-body text-dark">
                 <h6 class="card-title"><strong><%= reservation.event.event_name %></strong></h6>
