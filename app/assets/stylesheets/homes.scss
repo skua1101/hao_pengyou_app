@@ -14,7 +14,7 @@
   position: relative;
   margin: 5px;
   padding: 10px 30px;
-  color: #fff;
+  color: #000;
   text-decoration: none;
   font-size: 20px;
   letter-spacing: 3px;
@@ -24,9 +24,9 @@
 }
 
 .hbtn span:hover {
-  background: #DD0000;
+  background: #FFFF88;
   color: #000;
-  box-shadow: 0 0 50px #DD0000;
+  box-shadow: 0 0 50px #FFFF88;
   // transition-delay: 0.5s;
 }
 

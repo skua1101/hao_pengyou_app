@@ -15,20 +15,17 @@
  *= require_self
  */
 .main-container {
-  background-color: #eeeeee;
+  background-color: #fff;
   // background-image: image-url('haikei_hotel.jpg');
   background-size: cover;
 }
 
-.header-top{
-    width: 100%;
-    height: 200px;
-    position: relative;
-}
 .header-top img{
     width: 100%;
-    height: 200px;
+    height: 400px;
 }
+
+
 .header-top p{
     position: absolute;
     top: 50%;
@@ -41,7 +38,7 @@
 }
 
 header {
-  background-color: #000;
+  background-color: #fff;
   background-size: cover;
 }
 
@@ -51,23 +48,23 @@ header {
 }
 
 .user-container {
-   background-color: #eeeeee;
+   background-color: #fff;
   // background-image: image-url('haikei_cake.jpg');
   background-size: cover;
 }
 
 .notice-container {
-  background-image: image-url('haikei_heart.jpg');
+  background-color: #fff;
   background-size: cover;
 }
 
 .event-container {
-  // background-image: image-url('haikei_soccer.jpg');
+  background-image: #fff;
   background-size: cover;
 }
 
 .chat-container {
-  background-image: image-url('haikei_garden.jpg');
+  background-image: #fff;
   background-size: cover;
 }
 
@@ -108,7 +105,10 @@ footer {
 }
 
 .label {
-  background-color: blue;
+  border-radius: 40%;
+  background-color: #ccffff;
   padding: 5px;
-  color:#fff;
+  color:#000;
 }
+
+

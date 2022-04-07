@@ -1,8 +1,50 @@
 <div class="user-container">
   <div class="row">
+
     <div class='col-md-12'>
 
-          <% if @user == current_user %>
+       <div class= "header-top">
+         <p>
+           <% if @user == current_user %>
+                  My Page
+              <% else %>
+                  User Page
+              <% end %>
+         </p>
+         <%= image_tag 'top_haikeis.jpg'%>
+       </div>
+    </div>
+
+
+    <div class='col-md-12'>
+
+      <div class='col-md-12'>
+      <!--会員情報-->
+         <div class= "d-flex">
+              <div class= 'profile_image' style= 'padding-right:50px;'>
+                <%= image_tag @user.get_profile_image(150,150) ,class: "rounded-circle" %>
+              </div>
+              <div align= 'left'>
+                   <div style= 'font-size: 50px; margin: 0px;'><%= @user.last_name %> <%=@user.first_name%></div>
+                   <div>name：
+                        <%= @user.last_name_kana %> <%=@user.first_name_kana%>
+                   </div>
+                   <div>nationality：
+                        <%= @user.nationality %>
+                   </div>
+                   <div>follows
+                        <%= link_to followed_user_path(@user) do %>
+                          <%= @user.active_relationships.count %>
+                        <% end %>
+                        followers
+                        <%= link_to follower_user_path(@user) do %>
+                          <%= @user.passive_relationships.count %>
+                        <% end %>
+                    </div>
+              </div>
+         </div>
+
+         <% if @user == current_user %>
               <div class='col-md-12'>
                    <div class=table_user style="text-align: center;">
                       <table  align="center" >
@@ -34,82 +76,26 @@
               </div>
           <% end %>
 
-          <div class='col-md-12'>
-              <% if @user == current_user %>
-                  <h1 class=text-center style="color: white;"> My Page <i></i></h1>
-              <% else %>
-                  <h1 class=text-center style="color: white;"> User Page <i></i></h1>
-              <% end %>
-          </div>
-
-
-
-
-
-
-      <div class="col-md-12 col-sm-12 col-xs-12">
-
-      <!--会員情報-->
-        <div style="margin: 5px; font-weight:bold; color: #ffffff;"><h3>User Info</h3></div>
-            <table class="table-bordered" style="boder-width: thick; background-color: #ffffff; margin: 0px;">
-                <tr>
-                    <th style="padding: 15px 10px; background-color: #550000; color: white;">氏名</th>
-                    <td style="padding: 15px 10px;"><%= @user.last_name %> <%=@user.first_name%></td>
-                </tr>
-
-                <tr>
-                    <th style="padding: 15px 10px; background-color: #550000; color: white;">カナ</th>
-                    <td style="padding: 15px 10px;"><%= @user.last_name_kana %> <%=@user.first_name_kana%></td>
-                </tr>
-
-                <tr>
-                    <th style="padding: 15px 10px; background-color: #550000; color: white;">国籍</th>
-                    <td style="padding: 15px 10px;"><%= @user.nationality %></td>
-                </tr>
-
-              <% if @user == current_user %>
-                <tr>
-                    <th style="padding: 15px 10px;background-color: #550000; color: white;">郵便番号</th>
-                    <td style="padding: 15px 10px;"><%= @user.post_code %></td>
-                </tr>
-
-                <tr>
-                    <th style="padding: 15px 10px; background-color: #550000; color: white;">住所</th>
-                    <td style="padding: 15px 10px;"><%= @user.address %></td>
-                </tr>
-
-                <tr>
-                    <th style="padding: 15px 10px; background-color: #550000; color: white;">電話番号</th>
-                    <td style="padding: 15px 10px;"><%= @user.phone_number %></td>
-                </tr>
-
-                <tr>
-                    <th style="padding: 15px 10px; background-color: #550000; color: white;">メールアドレス</th>
-                    <td style="padding: 15px 10px;"><%= @user.email %></td>
-                </tr>
-              <%end%>
-            </table>
-
 
 
       <!--フォロー機能-->
-            <table class="table_news" style="boder-width: thick; margin: 0px 50px;">
-                <tr>
-                    <th style= "font-weight:bold; color: #ffffff;">follows</th>
-                    <td>
-                        <%= link_to followed_user_path(@user) do %>
-                          <%= @user.active_relationships.count %>
-                        <% end %>
-                    </td>
-                </tr>
+            <!--<table class="table_news" style="boder-width: thick; margin: 0px 50px;">-->
+                <!--<tr>-->
+                    <!--<th style= "font-weight:bold; color: #ffffff;">follows</th>-->
+                    <!--<td>-->
+                        <!--<%= link_to followed_user_path(@user) do %>-->
+                          <!--<%= @user.active_relationships.count %>-->
+                        <!--<% end %>-->
+                    <!--</td>-->
+                <!--</tr>-->
 
-                <tr>
-                    <th style= "font-weight:bold; color: #ffffff;">followers</th>
-                    <td>
-                        <%= link_to follower_user_path(@user) do %>
-                          <%= @user.passive_relationships.count %></td>
-                        <% end %>
-                </tr>
+                <!--<tr>-->
+                    <!--<th style= "font-weight:bold; color: #ffffff;">followers</th>-->
+                    <!--<td>-->
+                        <!--<%= link_to follower_user_path(@user) do %>-->
+                          <!--<%= @user.passive_relationships.count %></td>-->
+                        <!--<% end %>-->
+                <!--</tr>-->
 
               <% if @user != current_user %>
                 <tr>
@@ -128,11 +114,11 @@
                     </td>
                 </tr>
               <% end %>
-            </table>
-      </div>
+            <!--</table>-->
+      <!--</div>-->
 
-     <div class="row justify-content-center">
-      <div class="card-deck">
+    <div class="row">
+      <!--<div class="card-deck">-->
         <% @user_events.each do |event| %>
           <div class="col-12 col-md-3 col-lg-3 text-card-container">
             <div class="card border border-2" style = "padding: 0px; margin: 20px;">
@@ -145,25 +131,24 @@
               <!--<div class="card-body">-->
                <a href="/events/<%= event.id %>" class="card-body text-dark">
                 <h6 class="card-title"><strong><%= event.event_name %></strong></h6>
-                <p class="card-text"><%= event.event_date.strftime('%Y/%m/%d %H:%M~') %></p>
-                <p class="card-text"><%= event.event_status_i18n %></p>
+                <p class="card-text">開催日時：<%= event.event_date.strftime('%Y/%m/%d %H:%M~') %></p>
                 <p>
                     <% if @user == current_user %>
-                      <%= link_to event.reservations.count, reservations_path(id: event.id) %>
+                      予約数：<%= link_to event.reservations.count, reservations_path(id: event.id) %>名
                     <% else %>
                       <%= event.reservations.count %>
                     <% end %>
                 </p>
                 <p>
-           <% if @user == current_user %>
-              <%= form_with model: @event, url: event_path(event.id), method: :put,local:true do |f| %>
-                <%= f.select :event_status, options_for_select(Event.event_statuses_i18n.keys.map {|k| [I18n.t("enums.event.event_status.#{k}"), k]}, selected: event.event_status) %>
-                <%= f.submit '更新', class: 'btn btn-success ml-5' %>
-              <% end %>
-           <% else %>
-              <%= event.event_status_i18n %>
-           <% end %>
-         </p>
+                     <% if @user == current_user %>
+                        <%= form_with model: @event, url: event_path(event.id), method: :put,local:true do |f| %>
+                          <%= f.select :event_status, options_for_select(Event.event_statuses_i18n.keys.map {|k| [I18n.t("enums.event.event_status.#{k}"), k]}, selected: event.event_status) %>
+                          <%= f.submit '更新', class: 'btn btn-success ml-5' %>
+                        <% end %>
+                     <% else %>
+                        <%= event.event_status_i18n %>
+                     <% end %>
+                </p>
               <!--</div>-->
               </a>
             </div>
@@ -175,12 +160,17 @@
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <div class="card-deck">
+  <div class="row ">
+    <!--<div class="card-deck">-->
       <% @user_reservations.each do |reservation| %>
           <div class="col-12 col-md-3 col-lg-3 text-card-container">
             <div class="card border border-2" style = "padding: 0px; margin: 20px;">
                 <%= image_tag reservation.event.image.variant(resize_to_fill: [450, 250])%>
+            <div class="tag-box">
+              <% reservation.event.tags.each do |tag| %>
+                 <span class="label"><%= tag.name %></span>
+              <% end %>
+            </div>
               <!--<div class="card-body">-->
                <a href="/reservations/<%= reservation.id %>" class="card-body text-dark">
                 <h6 class="card-title"><strong><%= reservation.event.event_name %></strong></h6>
