@@ -25,10 +25,14 @@
                 <%= image_tag @user.get_profile_image(150,150) ,class: "rounded-circle" %>
               </div>
               <div align= 'left'>
-                   <div style= 'font-size: 50px; margin: 0px;'><%= @user.last_name %> <%=@user.first_name%></div>
+                   <div style= 'font-size: 50px; margin: 0px;'><%=@user.nickname%></div>
+
+                   <% if @user == current_user %>
                    <div>name：
                         <%= @user.last_name_kana %> <%=@user.first_name_kana%>
                    </div>
+                   <% end %>
+
                    <div>nationality：
                         <%= @user.nationality %>
                    </div>
