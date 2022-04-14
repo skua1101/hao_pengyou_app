@@ -11,6 +11,11 @@
         </div>
 
         <div class="form_group" style="display: flex">
+          <div class="col-md-2"><%=f.label :nickname, "ニックネーム" %></div>
+          <div class="col-md-2"><%=f.text_field :nickname %></div>
+        </div>
+
+        <div class="form_group" style="display: flex">
           <div class="col-md-2">氏名</div>
           <div class="col-md-2"><%=f.text_field :last_name %></div>
           <div class="col-md-2"><%=f.text_field :first_name %></div>

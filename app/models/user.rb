@@ -31,6 +31,7 @@ class User < ApplicationRecord
   validates :address, presence:true
   validates :email, presence:true
   validates :phone_number, presence: true,format:{ with:  /\A\d{10,11}\z/}
+  validates :nickname, presence:true, uniqueness: true
 
 
   def followed_by?(user)
