@@ -3,7 +3,7 @@
     <div class='col-md-12'>
        <div class= "header-top">
          <p>
-           Welcome To HaoPengYou!!
+           Welcome To HaoPengYou
          </p>
          <%= image_tag 'top_haikeis.jpg'%>
        </div>
@@ -74,9 +74,8 @@
         <% @events.each do |event| %>
           <div class="col-3">
             <div class="card border border-2 border-dark" style = "padding: 0px; margin: 20px;">
-              <% if event.image.attached? %>
                 <%= image_tag event.image.variant(resize_to_fill: [450, 300])%>
-              <% end %>
+            <div class="tag-box">
               <% event.tags.each do |tag| %>
                  <span class="label"><%= tag.name %></span>
               <% end %>
