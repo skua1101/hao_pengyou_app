@@ -13,6 +13,7 @@ class Event < ApplicationRecord
   validates :venue, presence: true
   validates :event_address, presence: true
   validates :event_date, presence: true
+  validates :image, presence: true
 
   def created_by?(user)
     reservations.find_by(user_id: user.id).present?
