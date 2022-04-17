@@ -11,7 +11,7 @@
     <% @events.each do |event| %>
       <div class="col-3">
         <div class="card border border-2" style = "padding: 0px; margin: 20px;">
-            <%= image_tag event.image.variant(resize_to_fill: [450, 250])%>
+            <%= image_tag event.image.variant(resize_to_fill: [450, 300])%>
             <div class="tag-box">
               <% event.tags.each do |tag| %>
                  <span class="label"><%= tag.name %></span>
