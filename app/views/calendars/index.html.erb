@@ -1,50 +1,54 @@
 <div class= "calendar-container">
- <div class='col-md-12'>
-  <div class= "header-top">
-         <p>Calender</p>
-         <%= image_tag 'top_haikeis.jpg'%>
-    </div>
- </div>
-
- <div class="d-flex">
-   <div class="col-md-3 col-sm-12 col-xs-12">
-     <%= render 'new'%>
-   </div>
-
-
-   <div class="col-md-9 col-sm-12 col-xs-12">
-    <%= month_calendar events: @calendars do |date, calendars| %>
-     <%= date.day %>
-     <% calendars.each do |calendar| %>
-      <div>
-        <%= calendar.calendar_title %>
-        <%= calendar.start_time.strftime("%H:%M〜") %>
+ <div class= "row">
+      <div class='col-md-12'>
+         <div class= "header-top">
+              <p>Calender</p>
+              <%= image_tag 'top_haikeis.jpg'%>
+         </div>
       </div>
-     <% end %>
-    <% end %>
-
-    <table class="memo table table-bordered">
-			 <thead>
-				<tr>
-				 <th>開催日</th>
-					<th>予定イベント名</th>
-					<th>詳細情報</th>
-					<th></th>
-					<!--<th></th>-->
-				</tr>
-		  </thead>
-			<% @calendars.each do |calendar| %>
-				<tbody>
-					<tr>
-					 <td><%= calendar.start_time.strftime("%Y-%m-%d %H:%M")%></td>
-						<td><%= calendar.calendar_title%></td>
-						<td><%= calendar.calendar_content%></td>
-						<!--<td><%=link_to "編集" , edit_calendar_path(calendar),:class=>"btn04"  %></td>-->
-						<td><%=link_to "削除",calendar_path(calendar.id) , method: :delete , data: {confirm:"削除しますか"} ,class: "btn btn-primary"%></td>
-					</tr>
-				</tbody>
-			<% end %>
-  		</table>
-   </div>
- </div>
+      
+      
+           <div class="col-md-3">
+             <%= render 'new'%>
+           </div>
+   
+   
+           <div class="col-md-9">
+               <%= month_calendar events: @calendars do |date, calendars| %>
+                <%= date.day %>
+                
+                <% calendars.each do |calendar| %>
+                 <div>
+                   <%= calendar.calendar_title %>
+                   <%= calendar.start_time.strftime("%H:%M〜") %>
+                 </div>
+                <% end %>
+                
+               <% end %>
+           
+               <table class="memo table table-bordered">
+                			 <thead>
+                   				<tr>
+                   				 <th>開催日</th>
+                   					<th>予定イベント名</th>
+                   					<th>詳細情報</th>
+                   					<th></th>
+                   					<!--<th></th>-->
+                   				</tr>
+                		  </thead>
+                		  
+              			<% @calendars.each do |calendar| %>
+                				<tbody>
+                   					<tr>
+                   					 <td><%= calendar.start_time.strftime("%Y-%m-%d %H:%M")%></td>
+                   						<td><%= calendar.calendar_title%></td>
+                   						<td><%= calendar.calendar_content%></td>
+                   						<!--<td><%=link_to "編集" , edit_calendar_path(calendar),:class=>"btn04"  %></td>-->
+                   						<td><%=link_to "削除",calendar_path(calendar.id) , method: :delete , data: {confirm:"削除しますか"} ,class: "btn btn-primary"%></td>
+                   					</tr>
+                				</tbody>
+              			<% end %>
+             		</table>
+           </div>
+  </div>
 </div>
