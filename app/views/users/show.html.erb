@@ -83,10 +83,12 @@
               </div>
           <% end %>
 
-　　　　<!--Follow機能-->
           <% if @user != current_user %>
-              <table>
+          <div class='col-md-12'>
+                   <div class=table_user style="text-align: center;">
+              <table align="center">
                 <tr>
+                  <!--Follow機能-->
                     <td style="border:none;">
                         <% if @user.followed_by?(current_user) %>
                           <%= link_to user_relationships_path(@user), method: :delete do %>
@@ -115,6 +117,8 @@
                     </td>
                 </tr>
                 </table>
+              </div>
+            </div>
           <% end %>
 
         <!--作成済みイベント一覧-->
